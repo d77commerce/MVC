@@ -1,0 +1,43 @@
+[
+  {
+    "Id": "6231c8e8-71ea-4cbe-82e6-ba08330ca805",
+    "Name": "Bread standart white",
+    "Price": 2.25,
+    "Quantity": 30,
+    "Description": "White bread 800gr.",
+    "BarCode": "1235490"
+  },
+  {
+    "Id": "909b1c7f-8a64-4b90-995c-7b0b3f231254",
+    "Name": "Bread standart brown",
+    "Price": 2.05,
+    "Quantity": 30,
+    "Description": "Brown bread 800gr.",
+    "BarCode": "1244540"
+  },
+  {
+    "Id": "45fa5179-df9d-47d8-9607-ed5beeca11c7",
+    "Name": "Bread toster white",
+    "Price": 2.65,
+    "Quantity": 30,
+    "Description": "White bread 800gr - toster.",
+    "BarCode": "9235491"
+  },
+  {
+    "Id": "b64e411c-6a8e-4398-85b1-b37597438f76",
+    "Name": "Bread toster brown",
+    "Price": 2.15,
+    "Quantity": 30,
+    "Description": "White bread 800gr.",
+    "BarCode": "3235433"
+  },
+  {
+    "Id": "6231c8e8-71ea-4cbe-82e6-ba08330ca805",
+    "Name": "Bread whit seeds",
+    "Price": 3.20,
+    "Quantity": 30,
+    "Description": " bread whit 7 types seeds 800gr.",
+    "BarCode": "4235418"
+  }
+
+]

@@ -1,0 +1,31 @@
+﻿@model IEnumerable<WebShopS.Core.Models.ProductDto>
+
+<h1>@ViewData["Title"]</h1>
+<p>Just test</p>
+
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Description</th>
+        <th>BarCode</th>
+        <th>Buy now</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var itemDto in Model)
+    {
+        <tr>
+            <td>@itemDto.Name</td>
+            <td>@itemDto.Price</td>
+            <td>@itemDto.Quantity</td>
+            <td>@itemDto.Description</td>
+            <td><button class="btn btn-success">Show barcode</button></td>
+            <td><button class="btn btn-success">Buy</button></td>
+        </tr>
+    }
+    </tbody>
+</table>
+
