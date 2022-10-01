@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace WebShopS.Data
+namespace MVCtest.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {

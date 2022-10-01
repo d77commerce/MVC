@@ -1,9 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using WebShopS.Core.Contracts;
-using WebShopS.Core.Data;
-using WebShopS.Core.Services;
-
+using MVCtest.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +13,6 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<IProductService, ProductService>();
 
 var app = builder.Build();
 
