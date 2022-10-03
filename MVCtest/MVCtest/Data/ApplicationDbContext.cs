@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using MVCtest.Models;
 
 namespace MVCtest.Data
 {
@@ -9,5 +10,6 @@ namespace MVCtest.Data
             : base(options)
         {
         }
+        public DbSet<Category> Categories { get; set; }
     }
 }
