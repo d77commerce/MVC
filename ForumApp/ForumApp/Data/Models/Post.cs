@@ -11,13 +11,15 @@ namespace ForumApp.Data.Models
         [Comment("Post Identifier")]
         [Key]
         public int Id { get; set; }
+
         [Required]
         [Comment("Title")]
         [MaxLength(TitleMaxPost)]
-        public string Title { get; set; }
+        public string Title { get; set; } = null!;
+
         [Required]
         [Comment("Content")]
         [MaxLength(ContentMaxPost)]
-        public string Content { get; set; }
+        public string Content { get; set; } = null!;
     }
 }

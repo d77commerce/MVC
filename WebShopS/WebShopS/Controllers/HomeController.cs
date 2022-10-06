@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Microsoft.VisualBasic;
 using WebShopS.Models;
 
 namespace WebShopS.Controllers
@@ -15,11 +16,22 @@ namespace WebShopS.Controllers
 
         public IActionResult Index()
         {
+            this.HttpContext.Session.SetString("name","Pesho");
+
+            if (TempData.ContainsKey("LastAccessTime"))
+            {
+                return Ok(TempData["LastAccessTime"]);
+            }
+            TempData["LastAccessTime"] = DateTime.Now;
+
             return View();
         }
 
         public IActionResult Privacy()
         {
+            this.HttpContext.Session.GetString("name");
+
+            if(!)
             return View();
         }
 
