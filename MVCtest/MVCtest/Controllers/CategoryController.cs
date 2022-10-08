@@ -36,12 +36,19 @@ namespace MVCtest.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Category newObject)
         {
-            dbCategoryContext.Categories.Add(newObject);
-            dbCategoryContext.SaveChanges();
-            return new ContentResult()
+            if (ModelState.IsValid)
             {
-                Content = "<script language='javascript' type='text/javascript'>alert('Thanks for Feedback!');</script>"
-            };
+                dbCategoryContext.Categories.Add(newObject);
+                dbCategoryContext.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(newObject);
+
+        }
+        public IActionResult Edit()
+        {
+            return View();
 
         }
     }

@@ -5,43 +5,65 @@
 
 <div class="text-center">
     <h1 class="display-4">Category</h1>
-    <p>Learn about <a href="https://clickandgrab.co.uk">Web Shop
-    </a>.</p>
+    <p>
+        Learn about <a href="https://clickandgrab.co.uk">
+            Web Shop
+        </a>.
+    </p>
     <div class="text-md-end">
         <a asp-controller="Category" asp-action="Create"><button class="btn btn-primary">Create New Category</button></a>
     </div>
 </div>
-<br /><br />
+<br />
+<br />
 <div>
     <table class="table table-bordered">
         <thead>
-        <tr>
-            <th>
-                Category Name
-            </th>
-            <th>
-                Display Order
-            </th>
-            <th>
-                Time
-            </th>
-        </tr>
+            <tr class="fw-light">
+                <th>
+                    Category Name
+                </th>
+                <th>
+                    Display Order
+                </th>
+                <th>
+                    Time
+                </th>
+                <th>
+
+                </th>
+                <th>
+
+                </th>
+            </tr>
         </thead>
         <tbody>
-        @foreach (var obj in Model)
-        {
-            <tr>
-                <td width="50%">
-                    @obj.Name
-                </td>
-                <td width="30%">
-                    @obj.DisplayOrder
-                </td>
-                <td width="30%">
-                    @obj.CreatedTime
-                </td>
-            </tr>
-        }
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td width="50%">
+                        @obj.Name
+                    </td>
+                    <td width="30%">
+                        @obj.DisplayOrder
+                    </td>
+                    <td width="30%">
+                        @obj.CreatedTime
+                    </td>
+                    <td>
+                        <a>
+                            <button class="btn btn-primary">UPDATE</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a asp-controller ="Category" asp-action="Edit">
+                            <button class="btn btn-primary">Edit</button>
+                        </a>
+
+
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 
