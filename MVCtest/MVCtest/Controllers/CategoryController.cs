@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MVCtest.Data;
 using MVCtest.Models;
 
@@ -37,7 +38,7 @@ namespace MVCtest.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Category newObject)
+        public async Task<IActionResult> Create(Category newObject)
         {
             if (newObject.Name == newObject.DisplayOrder)
             {
@@ -47,26 +48,32 @@ namespace MVCtest.Controllers
             if (ModelState.IsValid)
             {
                 dbCategoryContext.Categories.Add(newObject);
-                dbCategoryContext.SaveChanges();
-                return RedirectToAction("Index");
+                await dbCategoryContext.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
 
             return View(newObject);
 
         }
 
-        public IActionResult Edit(int? id)
+        public async  Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
+
+
+            if (id == null || id == 0)
             {
-                id = 2;
-                return View(id);
+
+                return NotFound();
             }
 
-            var categoryId = dbCategoryContext.Categories.Find(id);
-            var categoryFirst = dbCategoryContext.Categories.FirstOrDefault(u => u.Id == id);
-            var categorySingle = dbCategoryContext.Categories.SingleOrDefault(u => u.Id == id);
-            return View();
+            //var categoryFirst = await dbCategoryContext.Categories.FirstOrDefaultAsync(u => u.Id == id);
+            var categoryId =await dbCategoryContext.Categories.FindAsync(id);
+             if (categoryId == null)
+            {
+                return NotFound();
+            }
+            //  var categorySingle = dbCategoryContext.Categories.SingleOrDefault(u => u.Id == id);
+            return View(categoryId);
 
         }
 
@@ -85,7 +92,7 @@ namespace MVCtest.Controllers
 
             if (ModelState.IsValid)
             {
-                dbCategoryContext.Categories.Add(newObject);
+                dbCategoryContext.Categories.Update(newObject);
                 dbCategoryContext.SaveChanges();
                 return RedirectToAction("Index");
             }

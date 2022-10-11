@@ -1,4 +1,4 @@
-﻿        
+﻿
 using System.ComponentModel.DataAnnotations;
 using Microsoft.VisualBasic;
 
@@ -9,10 +9,13 @@ namespace MVCtest.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        [MaxLength (100)]
+        [MaxLength(100)]
         public string Name { get; set; } = null!;
-
-        public string DisplayOrder { get; set; }
+        [Required]
+        [MaxLength(100)]
+        public string DisplayOrder { get; set; } = null!;
+       
+        public bool isDelete = false;
         public DateTime CreatedTime { get; set; } = DateTime.Now;
     }
 }

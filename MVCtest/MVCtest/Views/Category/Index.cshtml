@@ -51,13 +51,13 @@
                         @obj.CreatedTime
                     </td>
                     <td>
-                        <a>
+                       
                             <button class="btn btn-primary">UPDATE</button>
-                        </a>
+                       
                     </td>
                     <td>
-                        <a asp-controller ="Category" asp-action="Edit">
-                            <button class="btn btn-primary">Edit</button>
+                        <a asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id">
+                            <button class="btn btn-primary" >Edit</button>
                         </a>
 
 
