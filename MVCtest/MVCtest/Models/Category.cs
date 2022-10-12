@@ -1,5 +1,6 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic;
 
 namespace MVCtest.Models
@@ -14,8 +15,9 @@ namespace MVCtest.Models
         [Required]
         [MaxLength(100)]
         public string DisplayOrder { get; set; } = null!;
-       
-        public bool isDelete = false;
         public DateTime CreatedTime { get; set; } = DateTime.Now;
+        [Comment("Marks record as delated")]
+        [Required]
+        public bool isDeleted { get; set; } = false;
     }
 }

@@ -2,7 +2,8 @@
 @{
     ViewData["Title"] = "Category";
 }
-
+ &nbsp;
+<partial name="Notification"></partial>
 <div class="text-center">
     <h1 class="display-4">Category</h1>
     <p>
@@ -51,13 +52,15 @@
                         @obj.CreatedTime
                     </td>
                     <td>
-                       
-                            <button class="btn btn-primary">UPDATE</button>
-                       
+
+                        <a asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id">
+                            <button class="btn btn-primary">Edit</button>
+                        </a>
+
                     </td>
                     <td>
-                        <a asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id">
-                            <button class="btn btn-primary" >Edit</button>
+                        <a asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id">
+                            <button class="btn btn-primary" onclick="return confirm('Are You Sure You want to DELATE Category @obj.Name')">Delete</button>
                         </a>
 
 

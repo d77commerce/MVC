@@ -19,10 +19,20 @@ namespace MVCtest.Controllers
         /// List of Category
         /// </summary>
         /// <returns></returns>
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
 
-            IEnumerable<Category> category = dbCategoryContext.Categories;
+            var category = await dbCategoryContext.Categories.
+                Where(p => p.isDeleted == false)
+                .Select(p => new Category()
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    DisplayOrder = p.DisplayOrder,
+                    CreatedTime = p.CreatedTime,
+
+                })
+                .ToListAsync();
             return View(category);
         }
 
@@ -49,6 +59,7 @@ namespace MVCtest.Controllers
             {
                 dbCategoryContext.Categories.Add(newObject);
                 await dbCategoryContext.SaveChangesAsync();
+                TempData["success"] = "Category create successfully";
                 return RedirectToAction(nameof(Index));
             }
 
@@ -56,7 +67,7 @@ namespace MVCtest.Controllers
 
         }
 
-        public async  Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id)
         {
 
 
@@ -67,8 +78,8 @@ namespace MVCtest.Controllers
             }
 
             //var categoryFirst = await dbCategoryContext.Categories.FirstOrDefaultAsync(u => u.Id == id);
-            var categoryId =await dbCategoryContext.Categories.FindAsync(id);
-             if (categoryId == null)
+            var categoryId = await dbCategoryContext.Categories.FindAsync(id);
+            if (categoryId == null)
             {
                 return NotFound();
             }
@@ -83,7 +94,7 @@ namespace MVCtest.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Category newObject)
+        public async Task<IActionResult> Edit(Category newObject)
         {
             if (newObject.Name == newObject.DisplayOrder)
             {
@@ -93,11 +104,24 @@ namespace MVCtest.Controllers
             if (ModelState.IsValid)
             {
                 dbCategoryContext.Categories.Update(newObject);
-                dbCategoryContext.SaveChanges();
-                return RedirectToAction("Index");
+                await dbCategoryContext.SaveChangesAsync();
+                TempData["success"] = "Category update successfully";
+                return RedirectToAction(nameof(Index));
             }
 
             return View(newObject);
+        }
+        public async Task<IActionResult> Delete(int id)
+        {
+            var categoryId = await dbCategoryContext.Categories.FindAsync(id);
+            if (categoryId != null)
+            {
+                categoryId.isDeleted = true;
+                await dbCategoryContext.SaveChangesAsync();
+            }
+            return RedirectToAction(nameof(Index));
+
+
         }
     }
 }
