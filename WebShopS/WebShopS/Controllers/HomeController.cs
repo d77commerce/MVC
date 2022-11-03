@@ -31,7 +31,7 @@ namespace WebShopS.Controllers
         {
             this.HttpContext.Session.GetString("name");
 
-            if(!)
+            
             return View();
         }
 
