@@ -5,6 +5,8 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HouseRentingSystem", "HouseRentingSystem\HouseRentingSystem.csproj", "{8D602DA8-F282-4F04-8070-09CF77C00D10}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HouseRentingSystem.Infrastructure", "HouseRentingSystem.Infrastructure\HouseRentingSystem.Infrastructure.csproj", "{C441C6C2-0FA6-428D-9218-6076509A1D3C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{8D602DA8-F282-4F04-8070-09CF77C00D10}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D602DA8-F282-4F04-8070-09CF77C00D10}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D602DA8-F282-4F04-8070-09CF77C00D10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C441C6C2-0FA6-428D-9218-6076509A1D3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C441C6C2-0FA6-428D-9218-6076509A1D3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C441C6C2-0FA6-428D-9218-6076509A1D3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C441C6C2-0FA6-428D-9218-6076509A1D3C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
