@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
+using MVCtest.Configuration;
 using MVCtest.Models;
 
 namespace MVCtest.Data
@@ -15,6 +16,7 @@ namespace MVCtest.Data
             builder.Entity<Category>()
                 .Property(x => x.isDeleted)
                 .HasDefaultValue(false);
+            builder.ApplyConfiguration(new UserConfiguration());
             base.OnModelCreating(builder);
         }
         public DbSet<Category> Categories { get; set; }
