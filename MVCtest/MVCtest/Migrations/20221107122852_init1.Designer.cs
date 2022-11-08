@@ -4,6 +4,7 @@ using MVCtest.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVCtest.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221107122852_init1")]
+    partial class init1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -78,15 +80,15 @@ namespace MVCtest.Migrations
                         {
                             Id = "dea12856-c198-4129-b3f3-b893d8395082",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "fef44bb8-dcba-4715-829e-78d7bd371d95",
+                            ConcurrencyStamp = "dc4d5e29-12fc-499c-9a47-90489a44cdeb",
                             Email = "agent@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "agent@mail.com",
                             NormalizedUserName = "agent@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAcs1Qlw0287+hw0u0/OQ3UyNQAJQkwqZ+IIyr+QdE7yq9y99bA1nyU/XtfQym3Iqg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOBgELORlokkvWC/TGmyuoBZOHnvHNQ8mVQf7e3EV+uiZD1zCfJWdq2KKwWI3fwY9g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b9ce2be5-7d0e-48fa-8a3c-52643d205151",
+                            SecurityStamp = "67738cbb-c21f-42f2-b988-0e4cb4a6ef42",
                             TwoFactorEnabled = false,
                             UserName = "agent@mail.com"
                         },
@@ -94,15 +96,15 @@ namespace MVCtest.Migrations
                         {
                             Id = "6d5800ce-d726-4fc8-83d9-d6b3ac1f591e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e945ddf5-8153-41af-a5ec-7e9d7025da68",
+                            ConcurrencyStamp = "4e168239-44ea-4611-acdb-049a633a1d4e",
                             Email = "guest@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "guest@mail.com",
                             NormalizedUserName = "guest@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMVfQCBYrVEBvoShzQ/zxXkvy1cnXtxZ+9+vEU5nFbE/1hcnAsYstHl7F451OvnjHg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEZxZfAPmPbFJJ4aqY/s135Bz0rE/0F4cY8ev2JtAVP0aaLr08v+fCWBtXVZi6/NHg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f44829b5-7d87-4869-a177-4f43bac2076d",
+                            SecurityStamp = "2dc00733-e58a-4b45-bf06-e1d03ae53954",
                             TwoFactorEnabled = false,
                             UserName = "guest@mail.com"
                         });
@@ -143,26 +145,6 @@ namespace MVCtest.Migrations
                     b.HasIndex("WorkerId");
 
                     b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedTime = new DateTime(2022, 11, 8, 11, 35, 16, 56, DateTimeKind.Local).AddTicks(434),
-                            DisplayOrder = "Retro",
-                            Name = "One",
-                            WorkerId = 1,
-                            isDeleted = false
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CreatedTime = new DateTime(2022, 11, 8, 11, 35, 16, 56, DateTimeKind.Local).AddTicks(445),
-                            DisplayOrder = "Onicks",
-                            Name = "Two",
-                            WorkerId = 1,
-                            isDeleted = false
-                        });
                 });
 
             modelBuilder.Entity("MVCtest.Models.Worker", b =>
@@ -187,14 +169,6 @@ namespace MVCtest.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Workers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            PhoneNumber = "+359888888888",
-                            UserId = "dea12856-c198-4129-b3f3-b893d8395082"
-                        });
                 });
 
             modelBuilder.Entity("MVCtest.Models.Category", b =>

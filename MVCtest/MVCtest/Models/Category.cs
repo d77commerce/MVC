@@ -1,5 +1,7 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic;
 
@@ -16,8 +18,13 @@ namespace MVCtest.Models
         [MaxLength(100)]
         public string DisplayOrder { get; set; } = null!;
         public DateTime CreatedTime { get; set; } = DateTime.Now;
-        [Comment("Marks record as delated")]
         [Required]
+        public int WorkerId { get; set; }
+
+        [ForeignKey(nameof(WorkerId))]
+        public Worker Worker { get; set; } = null!;
+        [Required]
+        [Comment("Marks record as delated")]
         public bool isDeleted { get; set; } = false;
     }
 }
