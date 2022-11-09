@@ -80,12 +80,27 @@ namespace MVCtest.Migrations
             migrationBuilder.InsertData(
                 table: "IdentityUser",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "6d5800ce-d726-4fc8-83d9-d6b3ac1f591e", 0, "56b2231b-d7b9-4e56-9329-6b507af5f90f", "guest@mail.com", false, false, null, "guest@mail.com", "guest@mail.com", "AQAAAAEAACcQAAAAECzE9bn2pMpPZpyiemUhJnb3e77lAkVFDCXeDKh24Z1gbOGMzOLKTWAoVi2WSq5A+Q==", null, false, "b31d9c73-dbd0-4b92-909b-6aebb032a58c", false, "guest@mail.com" });
+                values: new object[] { "6d5800ce-d726-4fc8-83d9-d6b3ac1f591e", 0, "9cecab58-b6f3-41f8-9172-4a802837c78b", "guest@mail.com", false, false, null, "guest@mail.com", "guest@mail.com", "AQAAAAEAACcQAAAAEMhWh+b+Vc2KTXTcZHF67W0dI26Y3Df6Qm/HPqLbpAhNOxVR1dL4D6rRXc5B+zatPA==", null, false, "49d00dea-b361-435f-94b3-3b5f449d4e94", false, "guest@mail.com" });
 
             migrationBuilder.InsertData(
                 table: "IdentityUser",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "dea12856-c198-4129-b3f3-b893d8395082", 0, "f94dfbdc-7e2a-4c23-9350-f97f56ada510", "agent@mail.com", false, false, null, "agent@mail.com", "agent@mail.com", "AQAAAAEAACcQAAAAENhaz6zPxTJZ1Z9dFW1sjNpLZnHrqoX4OA4M2xJd1p09idMuLVXjgL2qayEbfOPadA==", null, false, "80447c35-d209-4248-9707-dab9c38b63d8", false, "agent@mail.com" });
+                values: new object[] { "dea12856-c198-4129-b3f3-b893d8395082", 0, "db04fee7-2609-45b7-ba6d-0ab396723a96", "agent@mail.com", false, false, null, "agent@mail.com", "agent@mail.com", "AQAAAAEAACcQAAAAEOrVxcEgEz/YTEF8QjxtftCaYlGcNfs7lI0yvTCqRy8m9I/dAs96u2SZVR8HPk/Z0Q==", null, false, "40273e7d-2e4e-4408-9884-02ea3ec9a69a", false, "agent@mail.com" });
+
+            migrationBuilder.InsertData(
+                table: "Workers",
+                columns: new[] { "Id", "PhoneNumber", "UserId" },
+                values: new object[] { 1, "+359888888888", "dea12856-c198-4129-b3f3-b893d8395082" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "CreatedTime", "DisplayOrder", "Name", "WorkerId" },
+                values: new object[] { 1, new DateTime(2022, 11, 8, 13, 14, 14, 316, DateTimeKind.Local).AddTicks(4291), "Retro", "One", 1 });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "CreatedTime", "DisplayOrder", "Name", "WorkerId" },
+                values: new object[] { 2, new DateTime(2022, 11, 8, 13, 14, 14, 316, DateTimeKind.Local).AddTicks(4305), "Onicks", "Two", 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Categories_WorkerId",

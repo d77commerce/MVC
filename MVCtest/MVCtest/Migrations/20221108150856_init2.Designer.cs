@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVCtest.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221107153447_init3")]
-    partial class init3
+    [Migration("20221108150856_init2")]
+    partial class init2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -80,15 +80,15 @@ namespace MVCtest.Migrations
                         {
                             Id = "dea12856-c198-4129-b3f3-b893d8395082",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "65be5507-5988-4f6e-ad39-68727e85b7a9",
+                            ConcurrencyStamp = "504eded3-0c7a-40ca-8ee4-f5a1a6c8b85a",
                             Email = "agent@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "agent@mail.com",
                             NormalizedUserName = "agent@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEB615gREWoUyhGNzVwLL+NVIfiqyxMNXZe/jByyP4UFMUbgdgEpCxa8wXXxoegiUqQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEB6gl2HmycOb9fuQ19+oSyhgcrz8IJR/MygKAvQI3y6+8qpzuHLlW3JRgPogr4YxLA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "69e2c0fd-cc24-4c89-bb2f-811b8fc4dcee",
+                            SecurityStamp = "c6c9e60d-9d63-4f9d-84a0-4ab4e0fd371d",
                             TwoFactorEnabled = false,
                             UserName = "agent@mail.com"
                         },
@@ -96,15 +96,15 @@ namespace MVCtest.Migrations
                         {
                             Id = "6d5800ce-d726-4fc8-83d9-d6b3ac1f591e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7be0ed76-2160-488d-b50e-85988bc14bba",
+                            ConcurrencyStamp = "53e745f0-9cc3-4e28-a694-92e727c85d85",
                             Email = "guest@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "guest@mail.com",
                             NormalizedUserName = "guest@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFEA9bdez60Z69LIBIzl2C7GWawZ9bHDI5vXCM24/TyGbOsbY4dbcoACBZtCEqzkdw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFprv2iod9ghhuvGhfGo9+kB1BY3v0MUdWvp/UYmwkxmri8ixHurpYt2UWL10hyNVA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5a93beff-8d52-47a5-9449-9deb491e8c20",
+                            SecurityStamp = "5fc3f0db-4aa5-490c-9360-6ce6a4d844b6",
                             TwoFactorEnabled = false,
                             UserName = "guest@mail.com"
                         });
@@ -145,6 +145,26 @@ namespace MVCtest.Migrations
                     b.HasIndex("WorkerId");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedTime = new DateTime(2022, 11, 8, 15, 8, 55, 886, DateTimeKind.Local).AddTicks(4663),
+                            DisplayOrder = "Retro",
+                            Name = "One",
+                            WorkerId = 1,
+                            isDeleted = false
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedTime = new DateTime(2022, 11, 8, 15, 8, 55, 886, DateTimeKind.Local).AddTicks(4674),
+                            DisplayOrder = "Onicks",
+                            Name = "Two",
+                            WorkerId = 1,
+                            isDeleted = false
+                        });
                 });
 
             modelBuilder.Entity("MVCtest.Models.Worker", b =>

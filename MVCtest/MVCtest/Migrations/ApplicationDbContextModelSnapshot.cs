@@ -78,15 +78,15 @@ namespace MVCtest.Migrations
                         {
                             Id = "dea12856-c198-4129-b3f3-b893d8395082",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "fef44bb8-dcba-4715-829e-78d7bd371d95",
+                            ConcurrencyStamp = "504eded3-0c7a-40ca-8ee4-f5a1a6c8b85a",
                             Email = "agent@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "agent@mail.com",
                             NormalizedUserName = "agent@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAcs1Qlw0287+hw0u0/OQ3UyNQAJQkwqZ+IIyr+QdE7yq9y99bA1nyU/XtfQym3Iqg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEB6gl2HmycOb9fuQ19+oSyhgcrz8IJR/MygKAvQI3y6+8qpzuHLlW3JRgPogr4YxLA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b9ce2be5-7d0e-48fa-8a3c-52643d205151",
+                            SecurityStamp = "c6c9e60d-9d63-4f9d-84a0-4ab4e0fd371d",
                             TwoFactorEnabled = false,
                             UserName = "agent@mail.com"
                         },
@@ -94,15 +94,15 @@ namespace MVCtest.Migrations
                         {
                             Id = "6d5800ce-d726-4fc8-83d9-d6b3ac1f591e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e945ddf5-8153-41af-a5ec-7e9d7025da68",
+                            ConcurrencyStamp = "53e745f0-9cc3-4e28-a694-92e727c85d85",
                             Email = "guest@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "guest@mail.com",
                             NormalizedUserName = "guest@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMVfQCBYrVEBvoShzQ/zxXkvy1cnXtxZ+9+vEU5nFbE/1hcnAsYstHl7F451OvnjHg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFprv2iod9ghhuvGhfGo9+kB1BY3v0MUdWvp/UYmwkxmri8ixHurpYt2UWL10hyNVA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f44829b5-7d87-4869-a177-4f43bac2076d",
+                            SecurityStamp = "5fc3f0db-4aa5-490c-9360-6ce6a4d844b6",
                             TwoFactorEnabled = false,
                             UserName = "guest@mail.com"
                         });
@@ -148,7 +148,7 @@ namespace MVCtest.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedTime = new DateTime(2022, 11, 8, 11, 35, 16, 56, DateTimeKind.Local).AddTicks(434),
+                            CreatedTime = new DateTime(2022, 11, 8, 15, 8, 55, 886, DateTimeKind.Local).AddTicks(4663),
                             DisplayOrder = "Retro",
                             Name = "One",
                             WorkerId = 1,
@@ -157,7 +157,7 @@ namespace MVCtest.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedTime = new DateTime(2022, 11, 8, 11, 35, 16, 56, DateTimeKind.Local).AddTicks(445),
+                            CreatedTime = new DateTime(2022, 11, 8, 15, 8, 55, 886, DateTimeKind.Local).AddTicks(4674),
                             DisplayOrder = "Onicks",
                             Name = "Two",
                             WorkerId = 1,

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVCtest.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221107122852_init1")]
+    [Migration("20221108145922_init1")]
     partial class init1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -80,15 +80,15 @@ namespace MVCtest.Migrations
                         {
                             Id = "dea12856-c198-4129-b3f3-b893d8395082",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "dc4d5e29-12fc-499c-9a47-90489a44cdeb",
+                            ConcurrencyStamp = "23ff846a-e7f8-4424-a5a1-e8f6f2c6292c",
                             Email = "agent@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "agent@mail.com",
                             NormalizedUserName = "agent@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOBgELORlokkvWC/TGmyuoBZOHnvHNQ8mVQf7e3EV+uiZD1zCfJWdq2KKwWI3fwY9g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPdDGzefjMK64eehcEG+Es3wQ8P0J5fmWc+y1gqG8N0EGl4XvWrTfSJgKnEaDvg6bw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "67738cbb-c21f-42f2-b988-0e4cb4a6ef42",
+                            SecurityStamp = "c9ed78ba-e47e-4e0d-b71a-5d6ad4f91ef2",
                             TwoFactorEnabled = false,
                             UserName = "agent@mail.com"
                         },
@@ -96,15 +96,15 @@ namespace MVCtest.Migrations
                         {
                             Id = "6d5800ce-d726-4fc8-83d9-d6b3ac1f591e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4e168239-44ea-4611-acdb-049a633a1d4e",
+                            ConcurrencyStamp = "9ce4af37-c03b-4131-8bc8-055a21165c99",
                             Email = "guest@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "guest@mail.com",
                             NormalizedUserName = "guest@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEZxZfAPmPbFJJ4aqY/s135Bz0rE/0F4cY8ev2JtAVP0aaLr08v+fCWBtXVZi6/NHg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMB9nFVpwa6uMjrt5+KzNSNg0s2/AbUzaRI/RfzJK3az/5ReNiy5ov3DtLeQS5ftug==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2dc00733-e58a-4b45-bf06-e1d03ae53954",
+                            SecurityStamp = "84cda513-922a-4c85-af63-e9ec478bf520",
                             TwoFactorEnabled = false,
                             UserName = "guest@mail.com"
                         });
@@ -145,6 +145,26 @@ namespace MVCtest.Migrations
                     b.HasIndex("WorkerId");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedTime = new DateTime(2022, 11, 8, 14, 59, 21, 896, DateTimeKind.Local).AddTicks(7983),
+                            DisplayOrder = "Retro",
+                            Name = "One",
+                            WorkerId = 1,
+                            isDeleted = false
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedTime = new DateTime(2022, 11, 8, 14, 59, 21, 896, DateTimeKind.Local).AddTicks(7999),
+                            DisplayOrder = "Onicks",
+                            Name = "Two",
+                            WorkerId = 1,
+                            isDeleted = false
+                        });
                 });
 
             modelBuilder.Entity("MVCtest.Models.Worker", b =>
@@ -169,6 +189,14 @@ namespace MVCtest.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Workers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            PhoneNumber = "+359888888888",
+                            UserId = "dea12856-c198-4129-b3f3-b893d8395082"
+                        });
                 });
 
             modelBuilder.Entity("MVCtest.Models.Category", b =>

@@ -12,7 +12,7 @@ namespace MVCtest.Data
             : base(options)
         {
         }
-      protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Category>()
                 .Property(x => x.isDeleted)
@@ -24,5 +24,6 @@ namespace MVCtest.Data
         }
         public DbSet<Category> Categories { get; set; } = null!;
         public DbSet<Worker> Workers { get; set; } = null!;
+
     }
 }

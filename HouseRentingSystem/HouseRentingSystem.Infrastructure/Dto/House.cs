@@ -39,7 +39,7 @@ namespace HouseRentingSystem.Infrastructure.Dto
         public int AgentId { get; set; }
 
         [ForeignKey(nameof(AgentId))]
-        public Agent Agent { get; set; }
+        public Agent Agent { get; set; } = null!;
 
         public string? RenterId { get; set; }
 
