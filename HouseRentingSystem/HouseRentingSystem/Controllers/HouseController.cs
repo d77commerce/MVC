@@ -30,7 +30,7 @@ namespace HouseRentingSystem.Controllers
         public IActionResult Add() => View();
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> Add(HouseModel model)
+        public async Task<IActionResult> Add(HouseHomeModel model)
         {
             int id = 1;
             return RedirectToAction(nameof(Details), new { id });
@@ -39,12 +39,12 @@ namespace HouseRentingSystem.Controllers
         [HttpGet]
         public async Task< IActionResult> Edit(int id)
             {
-            var model = new HouseModel();
+            var model = new HouseHomeModel();
             return View(model);
             }
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult>Edit(int id,HouseModel model)
+        public async Task<IActionResult>Edit(int id,HouseHomeModel model)
         {
             return RedirectToAction(nameof(Details), new { id });
         }

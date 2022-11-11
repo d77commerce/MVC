@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace HouseRentingSystem.Core.Models.House
 {
-    internal class HouseModel
+    public class HouseHomeModel
     {
+        public int Id { get; set; }
+        public string Title { get; set; } = null!;
+        public string ImgURL { get; set; } = null!;
+
     }
 }
