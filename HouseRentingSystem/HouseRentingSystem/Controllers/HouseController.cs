@@ -10,7 +10,7 @@ namespace HouseRentingSystem.Controllers
         {
             var model = new HousesQueryModel();
 
-            return View(model);
+            return  View(model);
 
         }
         [Authorize]

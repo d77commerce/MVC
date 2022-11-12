@@ -4,7 +4,7 @@ using HouseRentingSystem.Infrastructure.Data.Common;
 using HouseRentingSystem.Infrastructure.Dto;
 using Microsoft.EntityFrameworkCore;
 
-namespace HouseRentingSystem.Core.Servises
+namespace HouseRentingSystem.Core.Services
 {
     public class HouseService : IHouseService
     {
