@@ -1,16 +1,27 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using HouseRentingSystem.Core.Models.House;
 using Microsoft.AspNetCore.Authorization;
+using HouseRentingSystem.Core.Contracts;
+using HouseRentingSystem.Extensions;
 
 namespace HouseRentingSystem.Controllers
 {
     public class HouseController : Controller
     {
+        private readonly IHouseService houseService;
+        private readonly IAgentService agentService;
+
+        public HouseController(IHouseService _houseService, IAgentService _agentService)
+        {
+            houseService = _houseService;
+            agentService = _agentService;
+        }
+
         public async Task<IActionResult> All()
         {
             var model = new HousesQueryModel();
 
-            return  View(model);
+            return View(model);
 
         }
         [Authorize]
@@ -27,28 +38,56 @@ namespace HouseRentingSystem.Controllers
         }
         [Authorize]
         [HttpGet]
-        public IActionResult Add() => View();
+        public async Task< IActionResult> Add()
+        {
+            if((await agentService.ExistsById(User.Id()))==false)
+            {
+                return RedirectToAction(nameof(AgentController.Become), "Agent");
+            }
+            var model = new HouseModel()
+            {
+                HouseCategoryModel = await houseService.AllCategories()
+            };
+            return View(model);
+        }
+
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> Add(HouseHomeModel model)
+        public async Task<IActionResult> Add(HouseModel model)
         {
-            int id = 1;
+            if ((await agentService.ExistsById(User.Id())) == false)
+            {
+                return RedirectToAction(nameof(AgentController.Become), "Agent");
+            }
+
+            if((await houseService.CategoryExist(model.CategoryId)) == false)
+            {
+                ModelState.AddModelError(nameof(model.CategoryId), "Category not exists");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                model.HouseCategoryModel = await houseService.AllCategories();
+
+                return View(model);
+            }
+            int id = await houseService.Create(model);
             return RedirectToAction(nameof(Details), new { id });
         }
         [Authorize]
         [HttpGet]
-        public async Task< IActionResult> Edit(int id)
-            {
+        public async Task<IActionResult> Edit(int id)
+        {
             var model = new HouseHomeModel();
             return View(model);
-            }
+        }
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult>Edit(int id,HouseHomeModel model)
+        public async Task<IActionResult> Edit(int id, HouseHomeModel model)
         {
             return RedirectToAction(nameof(Details), new { id });
         }
-   
+
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> Delete(int id)

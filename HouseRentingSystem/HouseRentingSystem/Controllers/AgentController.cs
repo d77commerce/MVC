@@ -1,4 +1,5 @@
-﻿using HouseRentingSystem.Core.Contracts;
+﻿using HouseRentingSystem.Core.Constants;
+using HouseRentingSystem.Core.Contracts;
 using HouseRentingSystem.Core.Models.Agent;
 using HouseRentingSystem.Extensions;
 using Microsoft.AspNetCore.Authorization;
@@ -15,12 +16,12 @@ namespace HouseRentingSystem.Controllers
         {
            agentService = _agentService;
         }
-
+        [HttpGet]
         public async Task< IActionResult> Become()
         {
             if (await agentService.ExistsById(User.Id()))
             {
-               
+                TempData[MessageConstant.ErrorMessage] = "You are allredy Agent.";
 
                 return RedirectToAction("Index", "Home");
             }
@@ -30,8 +31,35 @@ namespace HouseRentingSystem.Controllers
         [HttpPost]
         public async Task<IActionResult> Become(BecomeAgentModel model)
         {
-            
-            return RedirectToAction("All","House");
+            var userId = User.Id();
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            if (await agentService.ExistsById(User.Id()))
+            {
+                TempData[MessageConstant.ErrorMessage] = "Вие вече сте Агент";
+
+                return RedirectToAction("Index", "Home");
+            }
+
+            if (await agentService.UserWithPhoneNumberExists(model.PhoneNumber))
+            {
+                TempData[MessageConstant.ErrorMessage] = "Телефона вече съществува";
+
+                return RedirectToAction("Index", "Home");
+            }
+
+            if (await agentService.UserHasRents(userId))
+            {
+                TempData[MessageConstant.ErrorMessage] = "Не трябва да имате наеми за да станете агент";
+
+                return RedirectToAction("Index", "Home");
+            }
+
+            await agentService.Create(userId, model.PhoneNumber);
+
+            return RedirectToAction("All", "House");
         }
     }
 }
