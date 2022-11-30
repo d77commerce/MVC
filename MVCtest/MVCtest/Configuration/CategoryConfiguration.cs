@@ -22,7 +22,7 @@ namespace MVCtest.Configuration
                     Name = "One",
                     DisplayOrder = "Retro",
                     CreatedTime = DateTime.Now,
-                    WorkerId = 1,
+                   
                     isDeleted = false
                 },
                 new Category()
@@ -31,7 +31,7 @@ namespace MVCtest.Configuration
                     Name = "Two",
                     DisplayOrder = "Onicks",
                     CreatedTime = DateTime.Now,
-                    WorkerId = 1,
+                   
                     isDeleted = false
                 }
             };
