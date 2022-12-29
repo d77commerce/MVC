@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace MVCtest.Configuration
 {
     public class UserConfiguration : IEntityTypeConfiguration<IdentityUser>
