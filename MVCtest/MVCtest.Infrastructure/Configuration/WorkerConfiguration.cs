@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using MVCtest.Models;
+using MVCtest.Infrastructure.Models;
 
 namespace MVCtest.Configuration
 {

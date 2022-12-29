@@ -2,15 +2,17 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MVCtest.Data;
+using MVCtest.Infrastructure.Common.Category;
+using MVCtest.Infrastructure.Models;
 using MVCtest.Models;
 
 namespace MVCtest.Controllers
 {
     public class CategoryController : Controller
     {
-        private readonly ApplicationDbContext dbCategoryContext;
+        private readonly ICategoryRepository dbCategoryContext;
 
-        public CategoryController(ApplicationDbContext _dbCategoryContext)
+        public CategoryController(ICategoryRepository _dbCategoryContext)
         {
             dbCategoryContext = _dbCategoryContext;
         }
@@ -22,7 +24,7 @@ namespace MVCtest.Controllers
         public async Task<IActionResult> Index()
         {
 
-            var category = await dbCategoryContext.Categories.
+            var category = dbCategoryContext.GetAll().
                 Where(p => p.isDeleted == false)
                 .Select(p => new Category()
                 {
@@ -32,7 +34,7 @@ namespace MVCtest.Controllers
                     CreatedTime = p.CreatedTime,
 
                 })
-                .ToListAsync();
+                .ToList();
             return View(category);
         }
 
@@ -57,8 +59,8 @@ namespace MVCtest.Controllers
 
             if (ModelState.IsValid)
             {
-                dbCategoryContext.Categories.Add(newObject);
-                await dbCategoryContext.SaveChangesAsync();
+                dbCategoryContext.Add(newObject);
+                 dbCategoryContext.Save();
                 TempData["success"] = "Category create successfully";
                 return RedirectToAction(nameof(Index));
             }
@@ -78,7 +80,7 @@ namespace MVCtest.Controllers
             }
 
             //var categoryFirst = await dbCategoryContext.Categories.FirstOrDefaultAsync(u => u.Id == id);
-            var categoryId = await dbCategoryContext.Categories.FindAsync(id);
+            var categoryId =  dbCategoryContext.GetFirstOrDefault(u=>u.Id==id);
             if (categoryId == null)
             {
                 return NotFound();
@@ -103,8 +105,8 @@ namespace MVCtest.Controllers
 
             if (ModelState.IsValid)
             {
-                dbCategoryContext.Categories.Update(newObject);
-                await dbCategoryContext.SaveChangesAsync();
+                dbCategoryContext.Update(newObject);
+              dbCategoryContext.Save();
                 TempData["success"] = "Category update successfully";
                 return RedirectToAction(nameof(Index));
             }
@@ -113,11 +115,11 @@ namespace MVCtest.Controllers
         }
         public async Task<IActionResult> Delete(int id)
         {
-            var categoryId = await dbCategoryContext.Categories.FindAsync(id);
+            var categoryId =  dbCategoryContext.GetFirstOrDefault(u=>u.Id==id);
             if (categoryId != null)
             {
                 categoryId.isDeleted = true;
-                await dbCategoryContext.SaveChangesAsync();
+               dbCategoryContext.Save();
             }
             return RedirectToAction(nameof(Index));
 

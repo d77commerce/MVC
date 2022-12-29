@@ -1,9 +1,7 @@
-﻿
+﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MVCtest.Models
+namespace MVCtest.Infrastructure.Models
 {
     public class Category
     {

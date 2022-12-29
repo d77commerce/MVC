@@ -1,8 +1,6 @@
-﻿
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using MVCtest.Configuration;
-using MVCtest.Models;
+using MVCtest.Infrastructure.Models;
 
 namespace MVCtest.Data
 {
