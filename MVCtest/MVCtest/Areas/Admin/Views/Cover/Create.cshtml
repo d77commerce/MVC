@@ -1,0 +1,22 @@
+﻿@model MVCtest.Infrastructure.Models.Cover
+@{
+    ViewData["Title"] = "Create";
+}
+<form method="post">
+    <div class="border-light">
+        <h2>Create Category</h2>
+    </div>
+    <hr />
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-bg-warning"></span>
+        <hr />
+       
+    </div>
+    <hr />
+    <div class="text-end">
+        <button type="submit" class="btn btn-primary">Create</button>
+        <a asp-controller="Cover" asp-action="Index" class="btn btn-primary">Back to list</a>
+    </div>
+</form>

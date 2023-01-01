@@ -15,11 +15,6 @@ namespace MVCtest.Infrastructure.Common.Category
             _context = context;
         }
 
-        public void Save()
-        {
-            _context.SaveChanges();
-        }
-
         public void Update(Models.Category obj)
         {
             _context.Categories.Update(obj);

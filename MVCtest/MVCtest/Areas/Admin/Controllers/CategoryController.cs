@@ -2,19 +2,21 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MVCtest.Data;
-using MVCtest.Infrastructure.Common.Category;
+using MVCtest.Infrastructure.Common;
 using MVCtest.Infrastructure.Models;
 using MVCtest.Models;
 
-namespace MVCtest.Controllers
+namespace MVCtest.Areas.Admin.Controllers
 {
+    [Area("Admin")]
+   
     public class CategoryController : Controller
     {
-        private readonly ICategoryRepository dbCategoryContext;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public CategoryController(ICategoryRepository _dbCategoryContext)
+        public CategoryController(IUnitOfWork unitOfWork)
         {
-            dbCategoryContext = _dbCategoryContext;
+            _unitOfWork = unitOfWork;
         }
 
         /// <summary>
@@ -24,7 +26,7 @@ namespace MVCtest.Controllers
         public async Task<IActionResult> Index()
         {
 
-            var category = dbCategoryContext.GetAll().
+            var category = _unitOfWork.Category.GetAll().
                 Where(p => p.isDeleted == false)
                 .Select(p => new Category()
                 {
@@ -59,8 +61,8 @@ namespace MVCtest.Controllers
 
             if (ModelState.IsValid)
             {
-                dbCategoryContext.Add(newObject);
-                 dbCategoryContext.Save();
+                _unitOfWork.Category.Add(newObject);
+                _unitOfWork.Save();
                 TempData["success"] = "Category create successfully";
                 return RedirectToAction(nameof(Index));
             }
@@ -80,7 +82,7 @@ namespace MVCtest.Controllers
             }
 
             //var categoryFirst = await dbCategoryContext.Categories.FirstOrDefaultAsync(u => u.Id == id);
-            var categoryId =  dbCategoryContext.GetFirstOrDefault(u=>u.Id==id);
+            var categoryId = _unitOfWork.Category.GetFirstOrDefault(u => u.Id == id);
             if (categoryId == null)
             {
                 return NotFound();
@@ -105,8 +107,8 @@ namespace MVCtest.Controllers
 
             if (ModelState.IsValid)
             {
-                dbCategoryContext.Update(newObject);
-              dbCategoryContext.Save();
+                _unitOfWork.Category.Update(newObject);
+                _unitOfWork.Save();
                 TempData["success"] = "Category update successfully";
                 return RedirectToAction(nameof(Index));
             }
@@ -115,11 +117,11 @@ namespace MVCtest.Controllers
         }
         public async Task<IActionResult> Delete(int id)
         {
-            var categoryId =  dbCategoryContext.GetFirstOrDefault(u=>u.Id==id);
+            var categoryId = _unitOfWork.Category.GetFirstOrDefault(u => u.Id == id);
             if (categoryId != null)
             {
                 categoryId.isDeleted = true;
-               dbCategoryContext.Save();
+                _unitOfWork.Save();
             }
             return RedirectToAction(nameof(Index));
 

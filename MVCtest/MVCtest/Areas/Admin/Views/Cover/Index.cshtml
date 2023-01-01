@@ -1,0 +1,64 @@
+﻿@model IEnumerable<MVCtest.Infrastructure.Models.Cover>
+@{
+    ViewData["Title"] = "Cover";
+}
+ &nbsp;
+<partial name="Notification"></partial>
+<div class="text-center">
+    <h1 class="display-4">Cover</h1>
+    <p>
+        Learn about <a href="https://clickandgrab.co.uk">
+            Web Shop
+        </a>.
+    </p>
+    <div class="text-md-end">
+        <a asp-controller="Cover" asp-action="Create"><button class="btn btn-primary">Create New Cover Type</button></a>
+    </div>
+</div>
+<br />
+<br />
+<div>
+    <table class="table table-bordered">
+        <thead>
+            <tr class="fw-light">
+                <th>
+                    Cover Type Name
+                </th>
+                
+              
+                <th>
+
+                </th>
+                <th>
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td width="50%">
+                        @obj.Name
+                    </td>
+                   
+                    <td>
+
+                        <a asp-controller="Cover" asp-action="Edit" asp-route-id="@obj.Id">
+                            <button class="btn btn-primary">Edit</button>
+                        </a>
+
+                    </td>
+                    <td>
+                        <a asp-controller="Cover" asp-action="Delete" asp-route-id="@obj.Id">
+                            <button class="btn btn-primary" onclick="return confirm('Are You Sure You want to DELATE Category @obj.Name')">Delete</button>
+                        </a>
+
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

@@ -4,6 +4,7 @@ using MVCtest.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVCtest.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221231154654_AddCoverTableAndSeed")]
+    partial class AddCoverTableAndSeed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -78,15 +80,15 @@ namespace MVCtest.Migrations
                         {
                             Id = "dea12856-c198-4129-b3f3-b893d8395082",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0c77afd6-58fa-4326-a0e5-a3d2bed2f8d1",
+                            ConcurrencyStamp = "d9333df9-8c3f-42f0-bf28-941d9c6eba58",
                             Email = "agent@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "agent@mail.com",
                             NormalizedUserName = "agent@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMIdbR+lusKlP7Mz9xMYwL6yz/BeQkZGxbjZoLbNWvMiTuCbhXfateeJ4l/CtYrIew==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPz5x3pUUfX6jX7ismcQGtFsLDmH0hqci5lBQMa0TPtNBWXLEQZ2bnVIKOdYH9D2Mw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "59746708-c77c-464b-8e87-9705233c6635",
+                            SecurityStamp = "eaa5f98b-00a3-43ab-aa24-a5b303fc6eae",
                             TwoFactorEnabled = false,
                             UserName = "agent@mail.com"
                         },
@@ -94,15 +96,15 @@ namespace MVCtest.Migrations
                         {
                             Id = "6d5800ce-d726-4fc8-83d9-d6b3ac1f591e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4fdb0364-f300-4507-81bc-512384844560",
+                            ConcurrencyStamp = "3652212c-5a7b-4e14-a529-b530e307f893",
                             Email = "guest@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "guest@mail.com",
                             NormalizedUserName = "guest@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEK8Y6zmF4UhorAMj9VU3dMb5EFoDSIfgpOxK99k7IA7jfPSxAXY/xrMrzXM4fdO0NA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIIycST3IaejsHxV4fNtVtJ2DhgwsE29F/3NZIoK//lXH3J1N+Gx14dupn7eYoGauA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a2553062-c93d-41aa-802d-9a64e90d5ff5",
+                            SecurityStamp = "254c942d-f059-480a-9891-7ec03abc784d",
                             TwoFactorEnabled = false,
                             UserName = "guest@mail.com"
                         });
@@ -143,7 +145,7 @@ namespace MVCtest.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedTime = new DateTime(2022, 12, 31, 17, 43, 56, 5, DateTimeKind.Local).AddTicks(3380),
+                            CreatedTime = new DateTime(2022, 12, 31, 15, 46, 53, 599, DateTimeKind.Local).AddTicks(277),
                             DisplayOrder = "Retro",
                             Name = "One",
                             isDeleted = false
@@ -151,7 +153,7 @@ namespace MVCtest.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedTime = new DateTime(2022, 12, 31, 17, 43, 56, 5, DateTimeKind.Local).AddTicks(3391),
+                            CreatedTime = new DateTime(2022, 12, 31, 15, 46, 53, 599, DateTimeKind.Local).AddTicks(289),
                             DisplayOrder = "Onicks",
                             Name = "Two",
                             isDeleted = false
@@ -170,10 +172,6 @@ namespace MVCtest.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("isDeleted")
-                        .HasColumnType("bit")
-                        .HasComment("Marks record as deleted");
-
                     b.HasKey("Id");
 
                     b.ToTable("Covers");
@@ -182,8 +180,7 @@ namespace MVCtest.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "One",
-                            isDeleted = false
+                            Name = "One"
                         });
                 });
 

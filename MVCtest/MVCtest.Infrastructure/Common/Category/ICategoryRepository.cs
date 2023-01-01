@@ -10,6 +10,6 @@ namespace MVCtest.Infrastructure.Common.Category
    public interface ICategoryRepository:IRepository<Models.Category>
    {
        void Update(Models.Category obj);
-       void Save();
+     
    }
 }
