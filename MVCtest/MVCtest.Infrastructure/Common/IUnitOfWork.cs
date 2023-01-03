@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MVCtest.Infrastructure.Common.Category;
+﻿using MVCtest.Infrastructure.Common.Category;
 using MVCtest.Infrastructure.Common.Cover;
+using MVCtest.Infrastructure.Common.Product;
 
 namespace MVCtest.Infrastructure.Common
 {
@@ -12,6 +8,7 @@ namespace MVCtest.Infrastructure.Common
     {
         ICategoryRepository Category { get; }
         ICoverRepository Cover { get; }
+        IProductRepository  Product { get; }
 
         void Save();
     }

@@ -17,15 +17,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MVCtest.Infrastructure\MVCtest.Infrastructure.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <UpToDateCheckInput Remove="Areas\Admin\Views\Cover\Edit.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Areas\Admin\Views\Cover\Edit.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MVCtest.Core\MVCtest.Core.csproj" />
   </ItemGroup>
 
 </Project>

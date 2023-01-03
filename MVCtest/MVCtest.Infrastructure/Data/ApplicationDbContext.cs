@@ -25,6 +25,7 @@ namespace MVCtest.Data
         public DbSet<Category> Categories { get; set; } = null!;
         public DbSet<Worker> Workers { get; set; } = null!;
         public DbSet<Cover> Covers { get; set; }=null!;
+        public DbSet<Product> Products { get; set; } = null!;
 
     }
 }

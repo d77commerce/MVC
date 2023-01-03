@@ -1,0 +1,39 @@
+﻿@model IEnumerable<MVCtest.Infrastructure.Models.Product>
+@{
+    ViewData["Title"] = "Product";
+}
+&nbsp;
+<partial name="Notification"></partial>
+<div class="text-center">
+    <h1 class="display-4">Product List</h1>
+    <p>
+        Learn about <a href="https://clickandgrab.co.uk">
+            Web Shop
+        </a>.
+    </p>
+    <div class="text-md-end">
+        <a asp-controller="Product" asp-action="Upsert"><button class="btn btn-primary">Create New Product</button></a>
+    </div>
+</div>
+<br />
+<br />
+<div>
+    <table class="table table-bordered">
+        <thead>
+            <tr class="fw-light">
+                <th> Title</th>
+                <th> ISBN</th>
+                <th>Price</th>
+                <th> Author</th>
+                <th> Cover Type</th>
+                <th>Category</th>
+                <th> </th>
+            </tr>
+        </thead>
+        <tbody>
+          
+
+        </tbody>
+    </table>
+
+</div>

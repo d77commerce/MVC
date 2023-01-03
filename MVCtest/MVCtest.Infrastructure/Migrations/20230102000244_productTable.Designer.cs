@@ -4,6 +4,7 @@ using MVCtest.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVCtest.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230102000244_productTable")]
+    partial class productTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -78,15 +80,15 @@ namespace MVCtest.Migrations
                         {
                             Id = "dea12856-c198-4129-b3f3-b893d8395082",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f8706207-da54-4b9f-a295-aa11c9153c31",
+                            ConcurrencyStamp = "24276657-9023-44f8-a733-0bb74b46eead",
                             Email = "agent@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "agent@mail.com",
                             NormalizedUserName = "agent@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDpU9yoic2TtHzoJ1x6OpLeUryKE9t3K7tPVSegaj6AhhvBZ1eO0GPgYxCAF3SKNTQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENtIbX/oQV3aw6yOzIYQlg2DvkTXLWJioJb7dbPEJA3gTs8qzxolTcdKsgYKGdAHzg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2ff4ed9a-f5d6-4606-a9da-232512eeab7e",
+                            SecurityStamp = "be472d69-a206-411f-94bf-478514c0aebf",
                             TwoFactorEnabled = false,
                             UserName = "agent@mail.com"
                         },
@@ -94,15 +96,15 @@ namespace MVCtest.Migrations
                         {
                             Id = "6d5800ce-d726-4fc8-83d9-d6b3ac1f591e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "66cebf94-de49-4d07-a1e2-c1ba2bcc4a52",
+                            ConcurrencyStamp = "0766d0c7-f35e-434d-822a-a0e4934358b9",
                             Email = "guest@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "guest@mail.com",
                             NormalizedUserName = "guest@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPvoU6bce1o1jlz3jg9+svjr/9/utrPdOZHspLYDs6XqF+kTfQ1wM4ZciXKn03vWZQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPVTvjuNH+o545wgrV2FnNvSwQdnClO1pUUpQDmHsVekg2csPQtMXWZG7UCpSVY4dA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "cd4a425d-3311-496d-8766-4f7e3aa83288",
+                            SecurityStamp = "6926a836-332a-4f5b-8a87-3f83a5f29121",
                             TwoFactorEnabled = false,
                             UserName = "guest@mail.com"
                         });
@@ -143,7 +145,7 @@ namespace MVCtest.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedTime = new DateTime(2023, 1, 2, 15, 43, 42, 106, DateTimeKind.Local).AddTicks(9608),
+                            CreatedTime = new DateTime(2023, 1, 2, 0, 2, 43, 640, DateTimeKind.Local).AddTicks(782),
                             DisplayOrder = "Retro",
                             Name = "One",
                             isDeleted = false
@@ -151,7 +153,7 @@ namespace MVCtest.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedTime = new DateTime(2023, 1, 2, 15, 43, 42, 106, DateTimeKind.Local).AddTicks(9622),
+                            CreatedTime = new DateTime(2023, 1, 2, 0, 2, 43, 640, DateTimeKind.Local).AddTicks(799),
                             DisplayOrder = "Onicks",
                             Name = "Two",
                             isDeleted = false
@@ -187,65 +189,6 @@ namespace MVCtest.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MVCtest.Infrastructure.Models.Product", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Author")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CoverId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ISBN")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImgURL")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("ListPrice")
-                        .HasColumnType("float");
-
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
-
-                    b.Property<double>("Price100")
-                        .HasColumnType("float");
-
-                    b.Property<double>("Price50")
-                        .HasColumnType("float");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("isDeleted")
-                        .HasColumnType("bit")
-                        .HasComment("Marks record as deleted");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("CoverId");
-
-                    b.ToTable("Products");
-                });
-
             modelBuilder.Entity("MVCtest.Infrastructure.Models.Worker", b =>
                 {
                     b.Property<int>("Id")
@@ -276,25 +219,6 @@ namespace MVCtest.Migrations
                             PhoneNumber = "+359888888888",
                             UserId = "dea12856-c198-4129-b3f3-b893d8395082"
                         });
-                });
-
-            modelBuilder.Entity("MVCtest.Infrastructure.Models.Product", b =>
-                {
-                    b.HasOne("MVCtest.Infrastructure.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MVCtest.Infrastructure.Models.Cover", "Cover")
-                        .WithMany()
-                        .HasForeignKey("CoverId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
-
-                    b.Navigation("Cover");
                 });
 
             modelBuilder.Entity("MVCtest.Infrastructure.Models.Worker", b =>
