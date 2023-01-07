@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.EntityFrameworkCore;
 
 namespace MVCtest.Infrastructure.Models
@@ -35,15 +36,17 @@ namespace MVCtest.Infrastructure.Models
         [Required]
         [Range(1, 10000)]
         public double Price100 { get; set; }
-        [Required]
+        [ValidateNever]
         public string ImgURL { get; set; } = null!;
 
         [ForeignKey(nameof(Category))]
         public int CategoryId { get; set; }
+        [ValidateNever]
         public Category Category { get; set; }
 
         [ForeignKey(nameof(Cover))]
         public int CoverId { get; set; }
+        [ValidateNever]
         public Cover Cover { get; set; }
         [Required]
         [Comment("Marks record as deleted")]

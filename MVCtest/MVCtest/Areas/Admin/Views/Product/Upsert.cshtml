@@ -53,7 +53,7 @@
         </div>
         <div class="mb-3">
             <label asp-for="Product.ImgURL"></label>
-            <input type="file" id="ValidUrl" class="form-control" />
+            <input type="file" id="ValidUrl" name="file" class="form-control" />
         </div>
         <div class="mb-3 col-6">
             <label asp-for="Product.CategoryId"></label>
@@ -81,9 +81,6 @@
                 <button type="submit"  onclick="return ValidateInput()" class="btn btn-primary">Create</button>
                 <a asp-controller="Product" asp-action="Index" class="btn btn-primary">Exit</a>
             }
-
-
-
         </div>
     </div>
 </form>

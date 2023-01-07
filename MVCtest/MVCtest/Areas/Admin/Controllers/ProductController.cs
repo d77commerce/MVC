@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MVCtest.Core.Models;
 using MVCtest.Infrastructure.Common;
@@ -10,10 +11,12 @@ namespace MVCtest.Areas.Admin.Controllers
     public class ProductController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public ProductController(IUnitOfWork unitOfWork)
+        public ProductController(IUnitOfWork unitOfWork, IWebHostEnvironment webHostEnvironment)
         {
             _unitOfWork = unitOfWork;
+            _webHostEnvironment = webHostEnvironment;
         }
         public async Task<IActionResult> Index()
         {
@@ -22,7 +25,12 @@ namespace MVCtest.Areas.Admin.Controllers
                 .Select(c => new Product()
                 {
                     Id = c.Id,
-                    Title = c.Title
+                    Title = c.Title,
+                    ISBN = c.ISBN,
+                    Price = c.Price,
+                    Author = c.Author,
+                    CoverId = c.CoverId,
+                    CategoryId = c.CategoryId
                 }).ToList();
             return View(product);
         }
@@ -62,7 +70,7 @@ namespace MVCtest.Areas.Admin.Controllers
                         Value = c.Id.ToString()
 
                     }),
-                CoverTypeList= _unitOfWork.Cover.GetAll()
+                CoverTypeList = _unitOfWork.Cover.GetAll()
                     .Where(c => c.isDeleted == false)
                     .Select(c => new SelectListItem
                     {
@@ -92,15 +100,30 @@ namespace MVCtest.Areas.Admin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Upsert(ProductVModel productVModel,IFormFile file)
+        public async Task<IActionResult> Upsert(ProductVModel productVModel, IFormFile? file)
         {
 
 
             if (ModelState.IsValid)
-            {
-               // _unitOfWork.Product.Update(productVModel);
+            { 
+                //new image upload in folder - images\products
+                string wwwRootPath = _webHostEnvironment.WebRootPath;
+                if (file != null)
+                {
+                    //copy file
+                    string fileName = Guid.NewGuid().ToString();
+                    var uploads = Path.Combine(wwwRootPath, @"images\products");
+                    var extension = Path.GetExtension(file.FileName);
+                    using (var fileStreams = new FileStream(Path.Combine(uploads,fileName+extension),FileMode.Create))
+                    {
+                        file.CopyTo(fileStreams);
+                    }
+
+                    productVModel.Product.ImgURL = @"\images\products" + fileName + extension;
+                }
+                _unitOfWork.Product.Add(productVModel.Product);
                 _unitOfWork.Save();
-                TempData["success"] = "Product update successfully";
+                TempData["success"] = "Product created successfully";
                 return RedirectToAction(nameof(Index));
             }
 
@@ -108,10 +131,10 @@ namespace MVCtest.Areas.Admin.Controllers
         }
         public async Task<IActionResult> Delete(int id)
         {
-            var coverId = _unitOfWork.Cover.GetFirstOrDefault(u => u.Id == id);
-            if (coverId != null)
+            var productId = _unitOfWork.Product.GetFirstOrDefault(u => u.Id == id);
+            if (productId != null)
             {
-                coverId.isDeleted = true;
+                productId.isDeleted = true;
                 _unitOfWork.Save();
             }
 

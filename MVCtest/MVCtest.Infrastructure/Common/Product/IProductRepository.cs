@@ -8,5 +8,6 @@ namespace MVCtest.Infrastructure.Common.Product
 {
     public interface IProductRepository :IRepository<Models.Product>
     {
+        void Update(Models.Product product);
     }
 }
