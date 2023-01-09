@@ -18,56 +18,62 @@
 <br />
 <br />
 <div>
-    <table class="table table-bordered">
+    <table class="table table-bordered" id="dtList">
         <thead>
-            <tr class="fw-light">
-                <th>
-                    Category Name
-                </th>
-                <th>
-                    Display Order
-                </th>
-                <th>
-                    Time
-                </th>
-                <th>
+        <tr class="fw-light">
+            <th>
+                Category Name
+            </th>
+            <th>
+                Display Order
+            </th>
+            <th>
+                Time
+            </th>
+            <th>
 
-                </th>
-                <th>
+            </th>
+            <th>
 
-                </th>
-            </tr>
+            </th>
+        </tr>
         </thead>
         <tbody>
-            @foreach (var obj in Model)
-            {
-                <tr>
-                    <td width="50%">
-                        @obj.Name
-                    </td>
-                    <td width="30%">
-                        @obj.DisplayOrder
-                    </td>
-                    <td width="30%">
-                        @obj.CreatedTime
-                    </td>
-                    <td>
+        @foreach (var obj in Model)
+        {
+            <tr>
+                <td width="50%">
+                    @obj.Name
+                </td>
+                <td width="30%">
+                    @obj.DisplayOrder
+                </td>
+                <td width="30%">
+                    @obj.CreatedTime
+                </td>
+             
+                <td>
 
-                        <a asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id">
-                            <button class="btn btn-primary">Edit</button>
-                        </a>
+                    <a asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id">
+                        <button class="btn btn-primary">Edit</button>
+                    </a>
 
-                    </td>
-                    <td>
-                        <a asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id">
-                            <button class="btn btn-primary" onclick="return confirm('Are You Sure You want to DELATE Category @obj.Name')">Delete</button>
-                        </a>
+                </td>
+                <td>
+                    <a asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id">
+                        <button class="btn btn-primary" onclick="return confirm('Are You Sure You want to DELATE Category @obj.Name')">Delete</button>
+                    </a>
 
 
-                    </td>
-                </tr>
-            }
+                </td>
+
+            </tr>
+        }
         </tbody>
     </table>
 
 </div>
+@section Scripts
+{
+    <script src="~/js/dtable.js"></script>
+}

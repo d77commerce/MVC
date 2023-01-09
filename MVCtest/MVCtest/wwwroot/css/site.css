@@ -16,3 +16,8 @@ html {
 body {
   margin-bottom: 60px;
 }
+.card-image {
+    height: 250px;
+    /*//or however you want it width:auto;
+    //so that the image ratio stays the same*/
+}

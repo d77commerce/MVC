@@ -20,7 +20,7 @@ namespace MVCtest.Areas.Admin.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var product = _unitOfWork.Product.GetAll()
+            var product = _unitOfWork.Product.GetAll(includeProperties:"Category,Cover")
                 .Where(c => c.isDeleted == false)
                 .Select(c => new Product()
                 {
@@ -30,7 +30,9 @@ namespace MVCtest.Areas.Admin.Controllers
                     Price = c.Price,
                     Author = c.Author,
                     CoverId = c.CoverId,
-                    CategoryId = c.CategoryId
+                    Cover = c.Cover,
+                    CategoryId = c.CategoryId,
+                    Category = c.Category
                 }).ToList();
             return View(product);
         }
@@ -88,8 +90,9 @@ namespace MVCtest.Areas.Admin.Controllers
             }
             else
             {
-                var ProductId = _unitOfWork.Product.GetFirstOrDefault(c => c.Id == id);
-                if (ProductId == null)
+               productVModel.Product = _unitOfWork.Product.GetFirstOrDefault(c => c.Id == id,
+                   includeProperties:"Category,Cover");
+                if (productVModel == null)
                 {
                     return NotFound();
                 }
@@ -114,14 +117,31 @@ namespace MVCtest.Areas.Admin.Controllers
                     string fileName = Guid.NewGuid().ToString();
                     var uploads = Path.Combine(wwwRootPath, @"images\products");
                     var extension = Path.GetExtension(file.FileName);
+                    if (productVModel.Product.ImgURL != null)
+                    {
+                        var oldImgPhat = Path.Combine(wwwRootPath, productVModel.Product.ImgURL.TrimStart('\\'));
+                        if (System.IO.File.Exists(oldImgPhat))
+                        {
+                            System.IO.File.Delete(oldImgPhat);
+                        }
+                    }
                     using (var fileStreams = new FileStream(Path.Combine(uploads,fileName+extension),FileMode.Create))
                     {
                         file.CopyTo(fileStreams);
                     }
 
-                    productVModel.Product.ImgURL = @"\images\products" + fileName + extension;
+                    productVModel.Product.ImgURL = @"\images\products\" + fileName + extension;
                 }
-                _unitOfWork.Product.Add(productVModel.Product);
+
+                if (productVModel.Product.Id == 0)
+                {
+                    _unitOfWork.Product.Add(productVModel.Product);
+                }
+                else
+                {
+                    _unitOfWork.Product.Update(productVModel.Product);
+                }
+           
                 _unitOfWork.Save();
                 TempData["success"] = "Product created successfully";
                 return RedirectToAction(nameof(Index));

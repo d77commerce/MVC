@@ -1,0 +1,52 @@
+﻿@model MVCtest.Core.Models.ProductVModel
+<partial name="Notification"></partial>
+<input asp-for="Product.Id" hidden />
+<div class="text-center">
+    <h1 class="display-4">@Model.Product.Title</h1>
+    <p>
+        Learn about <a href="https://clickandgrab.co.uk">
+            Web Shop
+        </a>.
+    </p>
+
+</div>
+<div class="row">
+    <div class="col-8">
+        <div class="row p-2">
+            <div class="col-12 p-1" style="border-radius: 5px; border: 1px solid cornsilk">
+                <div class="card">
+                    <img src="@Model.Product.ImgURL" width="100%" style="border-radius: 5px;" />
+
+                    <p class="card-title h5 text-bg-primary " style="border-radius: 5px; border:1px solid cornsilk "> Title:   &nbsp;@Model.Product.Title</p>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="row p-2">
+            <div class="col-12 p-1" style="border:whitesmoke; border-radius: 5px;">
+                <div class="card">
+
+                    <p class="card-title h5 text-bg-primary" style="border-radius: 5px; border: 1px solid cornsilk">&nbsp;Author :   &nbsp;@Model.Product.Author</p>
+                    <p class="card-title h5 text-bg-primary" style="border-radius: 5px; border: 1px solid cornsilk">&nbsp;Category :   &nbsp;@Model.Product.Category.Name</p>
+                    <p class="card-title h5 text-bg-primary" style="border-radius: 5px; border: 1px solid cornsilk">&nbsp;List Price :   &nbsp;@Model.Product.ListPrice</p>
+                    <p class="card-title h5 text-bg-primary" style="border-radius: 5px; border: 1px solid cornsilk">&nbsp;Price 1-50 :   &nbsp;@Model.Product.Price</p>
+                    <p class="card-title h5 text-bg-primary" style="border-radius: 5px; border: 1px solid cornsilk">&nbsp;Price 51-100 :   &nbsp;@Model.Product.Price50</p>
+                    <p class="card-title h5 text-bg-primary" style="border-radius: 5px; border: 1px solid cornsilk">&nbsp;Price 100+ :   &nbsp;@Model.Product.Price100</p>
+                    <p class="card-title h5 text-bg-primary" style="border-radius: 5px; border: 1px solid cornsilk">&nbsp;Cover type :   &nbsp;@Model.Product.Cover.Name</p>
+                    <p></p>
+                </div>
+                <div class="card-title h5 text-bg-primary" style="border-radius: 5px; border: 1px solid cornsilk">
+                    <p >&nbsp; Description :</p>
+                    <p >&nbsp; @Model.Product.Description</p>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+

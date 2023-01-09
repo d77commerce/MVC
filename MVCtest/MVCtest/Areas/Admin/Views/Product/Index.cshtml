@@ -1,8 +1,9 @@
-﻿@model IEnumerable<MVCtest.Infrastructure.Models.Product>
+﻿@using Microsoft.CodeAnalysis.Scripting
+@model IEnumerable<MVCtest.Infrastructure.Models.Product>
 @{
     ViewData["Title"] = "Product";
 }
-&nbsp;
+
 <partial name="Notification"></partial>
 <div class="text-center">
     <h1 class="display-4">Product List</h1>
@@ -18,7 +19,7 @@
 <br />
 <br />
 <div>
-    <table class="table table-bordered">
+    <table class="table" id="dtList">
         <thead>
             <tr class="fw-light">
                 <th> Title</th>
@@ -31,45 +32,48 @@
             </tr>
         </thead>
         <tbody>
-        @foreach (var obj in Model)
-        {
-            <tr class="fw-lighter">
-                <td >
-                    @obj.Title
-                </td>
-                <td >
-                    @obj.ISBN
-                </td>
-                <td >
-                    @obj.Price
-                </td>
-                <td >
-                    @obj.Author
-                </td>
-                <td >
-                    @obj.CoverId
-                </td>
-                <td  >
-                    @obj.CategoryId
-                </td>
+            @foreach (var obj in Model)
+            {
+                <tr class="fw-lighter">
+                    <td>
+                        @obj.Title
+                    </td>
+                    <td>
+                        @obj.ISBN
+                    </td>
+                    <td>
+                        @obj.Price
+                    </td>
+                    <td>
+                        @obj.Author
+                    </td>
+                    <td>
+                        @obj.Cover.Name
+                    </td>
 
-                <td>
+                    <td>
+                        @obj.Category.Name
+                    </td>
 
-                    <a asp-controller="Product" asp-action="Upsert" asp-route-id="@obj.Id">
-                        <button class="btn btn-primary">Edit</button>
-                    </a>
+                    <td>
+                        <a asp-controller="Product" asp-action="Upsert" asp-route-id="@obj.Id">
+                            <button class="btn btn-primary">Edit</button>
+                        </a>
+                        &nbsp;
+                        <a asp-controller="Product" asp-action="Delete" asp-route-id="@obj.Id">
+                            <button class="btn btn-primary" onclick="return confirm('Are You Sure You want to DELATE Category @obj.Title')">Delete</button>
+                        </a>
+                    </td>
 
-               
-                    <a asp-controller="Product" asp-action="Delete" asp-route-id="@obj.Id">
-                        <button class="btn btn-primary" onclick="return confirm('Are You Sure You want to DELATE Category @obj.Title')">Delete</button>
-                    </a>
-
-
-                </td>
-            </tr>
-        }
+                </tr>
+            }
 
         </tbody>
     </table>
 
 </div>
+
+@section Scripts
+    {
+    <script src="~/js/dtable.js"></script>
+}

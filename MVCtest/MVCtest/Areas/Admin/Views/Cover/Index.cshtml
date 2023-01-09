@@ -18,14 +18,14 @@
 <br />
 <br />
 <div>
-    <table class="table table-bordered">
+    <table class="table table-bordered" id="dtList">
         <thead>
             <tr class="fw-light">
                 <th>
                     Cover Type Name
                 </th>
-                
-              
+
+
                 <th>
 
                 </th>
@@ -37,28 +37,29 @@
         <tbody>
             @foreach (var obj in Model)
             {
-                <tr>
+                <tr class="fw-light">
                     <td width="50%">
                         @obj.Name
                     </td>
                    
-                    <td>
-
-                        <a asp-controller="Cover" asp-action="Edit" asp-route-id="@obj.Id">
-                            <button class="btn btn-primary">Edit</button>
-                        </a>
-
-                    </td>
-                    <td>
-                        <a asp-controller="Cover" asp-action="Delete" asp-route-id="@obj.Id">
-                            <button class="btn btn-primary" onclick="return confirm('Are You Sure You want to DELATE Category @obj.Name')">Delete</button>
-                        </a>
-
-
-                    </td>
+                        <td class="text-end">
+                            <a asp-controller="Cover" asp-action="Edit" asp-route-id="@obj.Id">
+                                <button class="btn btn-primary">Edit</button>
+                            </a>
+                        </td>
+                        <td>
+                            <a asp-controller="Cover" asp-action="Delete" asp-route-id="@obj.Id">
+                                <button class="btn btn-primary" onclick="return confirm('Are You Sure You want to DELATE Category @obj.Name')">Delete</button>
+                            </a>
+                        </td>
+                   
                 </tr>
             }
         </tbody>
     </table>
 
 </div>
+@section Scripts
+    {
+    <script src="~/js/dtable.js"></script>
+}

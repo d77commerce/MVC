@@ -1,8 +1,26 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿
+@model IEnumerable<MVCtest.Infrastructure.Models.Product>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<div class="row pb-3">
+    @foreach (var product in Model)
+    {
+        <div class="col-lg-3 col-md-6">
+            <div class="row p-2">
+                <div class="col-12 p-1" style="border:whitesmoke; border-radius: 5px;">
+                    <div class="card">
+                        <img src="@product.ImgURL" class="card-img-top rounded card-image" />
+                        <p class="card-title h5 text-bg-primary" style="border-radius: 5px"> &nbsp;@product.Title</p>
+                        <p class="card-title  text-bg-info" style="border-radius: 5px"> &nbsp;@product.Author</p>
+                        <p class="card-title  text-bg-info" style="border-radius: 5px"> &nbsp;@product.ListPrice</p>
+                        <div class="btn-info text-end"style="border-radius: 5px">
+                             <a asp-controller="Home" asp-action="MoreInfo" asp-route-id="@product.Id">
+                                <button class="btn btn-primary">More Info</button>
+                            </a>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 </div>

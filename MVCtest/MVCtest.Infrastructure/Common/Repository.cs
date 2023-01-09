@@ -13,6 +13,7 @@ namespace MVCtest.Infrastructure.Common
         public Repository(ApplicationDbContext context)
         {
             _context=context;
+            _context.Products.Include(u => u.Category).Include(u => u.Cover);
             dbSet = _context.Set<T>();
         }
         public T Get(int id)
@@ -20,15 +21,29 @@ namespace MVCtest.Infrastructure.Common
             throw new NotImplementedException();
         }
 
-        public T GetFirstOrDefault(Expression<Func<T, bool>> filter)
+        public T GetFirstOrDefault(Expression<Func<T, bool>> filter, string? includeProperties = null)
         {
            IQueryable<T> query = dbSet.Where(filter);
-           return query.FirstOrDefault();
+           if (includeProperties != null)
+           {
+               foreach (var includeProperty in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+               {
+                   query = query.Include(includeProperty);
+               }
+           }
+            return query.FirstOrDefault();
         }
 
-        public IEnumerable<T> GetAll()
+        public IEnumerable<T> GetAll(string? includeProperties = null)
         {
             IQueryable<T> query = dbSet;
+            if (includeProperties != null)
+            {
+                foreach (var includeProperty in includeProperties.Split(new char[]{ ','},StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProperty);
+                }
+            }
             return query.ToList();
         }
 

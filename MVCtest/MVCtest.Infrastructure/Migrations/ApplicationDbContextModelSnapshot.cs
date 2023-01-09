@@ -71,7 +71,7 @@ namespace MVCtest.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("IdentityUser");
+                    b.ToTable("IdentityUser", (string)null);
 
                     b.HasData(
                         new
@@ -137,7 +137,7 @@ namespace MVCtest.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
 
                     b.HasData(
                         new
@@ -176,7 +176,7 @@ namespace MVCtest.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Covers");
+                    b.ToTable("Covers", (string)null);
 
                     b.HasData(
                         new
@@ -243,7 +243,7 @@ namespace MVCtest.Migrations
 
                     b.HasIndex("CoverId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("MVCtest.Infrastructure.Models.Worker", b =>
@@ -267,7 +267,7 @@ namespace MVCtest.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Workers");
+                    b.ToTable("Workers", (string)null);
 
                     b.HasData(
                         new
