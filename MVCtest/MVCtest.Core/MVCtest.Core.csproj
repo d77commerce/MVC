@@ -10,8 +10,4 @@
     <ProjectReference Include="..\MVCtest.Infrastructure\MVCtest.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Servises\" />
-  </ItemGroup>
-
 </Project>

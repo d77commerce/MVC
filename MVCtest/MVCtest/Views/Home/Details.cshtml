@@ -1,4 +1,5 @@
-﻿@model MVCtest.Core.Models.ShoppingCart
+﻿@using MVCtest.Core.Models
+@model MVCtest.Core.Models.ShoppingCart
 <partial name="Notification"></partial>
 <input asp-for="@Model.ProductVModel.Product.Id" hidden />
 <div class="text-center">
@@ -30,7 +31,7 @@
                 <div class="card">
 
                     <p class="card-title h5 text-bg-primary" style="border-radius: 5px; border: 1px solid cornsilk">&nbsp;Author :   &nbsp;@Model.ProductVModel.Product.Author</p>
-                    <p class="card-title h5 text-bg-primary" style="border-radius: 5px; border: 1px solid cornsilk">&nbsp;Category :   &nbsp@Model.ProductVModel.Product.Category.Name</p>
+                    <p class="card-title h5 text-bg-primary" style="border-radius: 5px; border: 1px solid cornsilk">&nbsp;Category :   &nbsp;@Model.ProductVModel.Product.Category.Name</p>
                     <p class="card-title h5 text-bg-primary" style="border-radius: 5px; border: 1px solid cornsilk">&nbsp;List Price :   &nbsp;@Model.ProductVModel.Product.ListPrice</p>
                     <p class="card-title h5 text-bg-primary" style="border-radius: 5px; border: 1px solid cornsilk">&nbsp;Price 1-50 :   &nbsp;@Model.ProductVModel.Product.Price</p>
                     <p class="card-title h5 text-bg-primary" style="border-radius: 5px; border: 1px solid cornsilk">&nbsp;Price 51-100 :   &nbsp;@Model.ProductVModel.Product.Price50</p>
@@ -39,21 +40,9 @@
                     <p></p>
                 </div>
                 <div class="card-title h5 text-bg-primary" style="border-radius: 5px; border: 1px solid cornsilk">
-                    <p >&nbsp; Description :</p>
-                    <p>@Html.Raw(@Model.ProductVModel.Product.Description)</p>
+                    <p>&nbsp; Description :</p>
+                    <p>&nbsp; @Model.ProductVModel.Product.Description</p>
 
-                </div>
-                <div>
-                    <div class="mb-3 col-6">
-                        <label asp-for="@Model.Count"></label>
-                        <input asp-for="@Model.Count" class="form-control" />
-                        <span asp-validation-for="@Model.Count" class="text-bg-warning"></span>
-                    </div>
-                    <div class="text-end">
-                        <button type="submit" class="btn btn-primary">Buy</button>
-                        <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Exit</a>
-
-                    </div>
                 </div>
             </div>
 

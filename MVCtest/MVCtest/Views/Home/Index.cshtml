@@ -9,13 +9,20 @@
             <div class="row p-2">
                 <div class="col-12 p-1" style="border:whitesmoke; border-radius: 5px;">
                     <div class="card">
-                        <img src="@product.ImgURL" class="card-img-top rounded card-image" />
+                        <img src="@product.ImgURL" class="card-img-top rounded card-image" onclick="return confirm('Are You Sure You want to DELATE Category @product.Title')" />
+                        <div class="card-body">
                         <p class="card-title h5 text-bg-primary" style="border-radius: 5px"> &nbsp;@product.Title</p>
-                        <p class="card-title  text-bg-info" style="border-radius: 5px"> &nbsp;@product.Author</p>
-                        <p class="card-title  text-bg-info" style="border-radius: 5px"> &nbsp;@product.ListPrice</p>
+                        <p class="card-title  text-bg-info" style="border-radius: 5px"> &nbsp;by @product.Author</p>
+                        <p class="card-title  text-bg-info" style="border-radius: 5px"> &nbsp; list prise £ @product.ListPrice</p>
+                        </div>
                         <div class="btn-info text-end"style="border-radius: 5px">
                              <a asp-controller="Home" asp-action="MoreInfo" asp-route-id="@product.Id">
-                                <button class="btn btn-primary">More Info</button>
+                                 <button class="btn btn-primary">More Info</button>
+                                &nbsp;
+                                 <a asp-controller="Home" asp-action="MoreInfo" asp-route-id="@product.Id">
+                                     <button class="btn btn-primary">Buy now</button>
+
+                                 </a>
                             </a>
                             </div>
                     </div>
