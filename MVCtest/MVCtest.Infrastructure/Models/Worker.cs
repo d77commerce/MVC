@@ -17,4 +17,3 @@ namespace MVCtest.Infrastructure.Models
         public IdentityUser User { get; set; } = null!;
     }
 }
- 
