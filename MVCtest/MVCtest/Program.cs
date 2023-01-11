@@ -12,7 +12,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<ApplicationUser >(options =>
+builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
 {
     options.SignIn.RequireConfirmedAccount = false;
     options.SignIn.RequireConfirmedEmail = false;
@@ -21,9 +21,18 @@ builder.Services.AddDefaultIdentity<ApplicationUser >(options =>
     options.Password.RequireNonAlphanumeric = false;
     options.Password.RequiredLength = 4;
 })
+    .AddRoles<IdentityRole<Guid>>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddAuthorization(options =>
+    {
+        options.AddPolicy("ManagerPolicy", policy =>
+        {
+            policy.RequireRole("Admin");
+        });
+    });
 
 
 var app = builder.Build();

@@ -4,6 +4,7 @@ using MVCtest.Infrastructure.Models;
 using MVCtest.Models;
 using System.Diagnostics;
 using System.Security.Cryptography.X509Certificates;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MVCtest.Core.Models;
 using MVCtest.Core.Servises;
@@ -35,7 +36,7 @@ namespace MVCtest.Controllers
                 .Where(p => p.isDeleted == false);
             return View(productList);
         }
-
+        [Authorize(Policy = "ManagerPolicy")]
         public IActionResult Privacy()
         {
             return View();
