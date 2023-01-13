@@ -14,12 +14,15 @@ namespace MVCtest.Infrastructure.Models
     {
         [Key]
         public int Id { get; set; }
-        [MaxLength(15)]
-        public string PhoneNumber { get; set; } = null!;
 
         [Required]
         public Guid UserId { get; set; }
         [ForeignKey(nameof(UserId))]
         public ApplicationUser User { get; set; } = null!;
+        [Required]
+        public int DepartmentId { get; set; }
+
+        [ForeignKey(nameof(DepartmentId))]
+        public Department Department { get; set; } = null!;
     }
 }

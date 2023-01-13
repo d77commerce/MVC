@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MVCtest.Infrastructure.Common;
 using MVCtest.Infrastructure.Models;
 
 namespace MVCtest.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class CoverController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

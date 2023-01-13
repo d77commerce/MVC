@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MVCtest.Data;
@@ -9,7 +10,7 @@ using MVCtest.Models;
 namespace MVCtest.Areas.Admin.Controllers
 {
     [Area("Admin")]
-   
+    [Authorize(Roles = "Admin")]
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
