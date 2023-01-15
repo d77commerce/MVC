@@ -1,5 +1,8 @@
 ﻿using MVCtest.Infrastructure.Common.Category;
+using MVCtest.Infrastructure.Common.Company;
 using MVCtest.Infrastructure.Common.Cover;
+using MVCtest.Infrastructure.Common.Department;
+using MVCtest.Infrastructure.Common.Identity;
 using MVCtest.Infrastructure.Common.Product;
 
 namespace MVCtest.Infrastructure.Common
@@ -9,6 +12,9 @@ namespace MVCtest.Infrastructure.Common
         ICategoryRepository Category { get; }
         ICoverRepository Cover { get; }
         IProductRepository  Product { get; }
+        IDepartmentRepository Department { get; }
+        ICompanyRepository Company { get; }
+        IApplicationUser  ApplicationUser { get; }
 
         void Save();
     }

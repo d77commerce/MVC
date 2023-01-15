@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MVCtest.Core.Models
+namespace MVCtest.Core.Contracts
 {
-    public class Worker
+    public interface IAdministrationServices
     {
-
+        Task<Guid>GetIdByEmail(string email);
     }
 }

@@ -1,0 +1,90 @@
+﻿@model IEnumerable<MVCtest.Core.Models.Administration.DepartmentViewModel>
+@{
+    ViewData["Title"] = "Category";
+}
+ &nbsp;
+<partial name="Notification"></partial>
+<div class="text-center">
+    <h1 class="display-4">Departments</h1>
+    <p>
+        Learn about <a href="https://clickandgrab.co.uk">
+            Web Shop
+        </a>.
+    </p>
+    <div class="text-md-end">
+        <a asp-controller="Category" asp-action="Create"><button class="btn btn-primary">Create New Department</button></a>
+    </div>
+</div>
+<br />
+<br />
+<div>
+    <table class="table table-bordered" id="dtList">
+        <thead>
+            <tr class="fw-light">
+                <th>
+                    Department Name
+                </th>
+                <th>
+                    Address
+                </th>
+                <th>
+                    Manager 
+                </th>
+                <th>
+                    Worker
+                </th>
+                <th>
+
+                </th>
+                <th>
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td width="50%">
+                        @obj.Name
+                    </td>
+                    <td width="50%">
+                        @obj.Address
+                    </td>
+                    <td width="80%">
+                        @foreach (var manager in obj.Managers)
+                        {
+                            @manager.UserId.ToString();
+                        }
+                    </td>
+                    <td width="80%">
+                        @foreach (var worker in obj.Workers)
+                        {
+                            @worker.UserId.ToString();
+                        }
+                    </td>
+                    <td>
+
+                        <a asp-controller="Administration" asp-action="Index" asp-route-id="@obj.Id">
+                            <button class="btn btn-primary">Edit</button>
+                        </a>
+
+                    </td>
+                    <td>
+                        <a asp-controller="Administration" asp-action="AddDepartment" asp-route-id="@obj.Id">
+                            <button class="btn btn-primary" onclick="return confirm('Are You Sure You want to DELATE Category @obj.Name')">Delete</button>
+                        </a>
+
+
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+@section Scripts
+    {
+    <script src="~/js/dtable.js"></script>
+}

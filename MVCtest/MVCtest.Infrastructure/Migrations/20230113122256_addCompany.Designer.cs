@@ -4,6 +4,7 @@ using MVCtest.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVCtest.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230113122256_addCompany")]
+    partial class addCompany
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -192,7 +194,7 @@ namespace MVCtest.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedTime = new DateTime(2023, 1, 14, 22, 29, 36, 229, DateTimeKind.Local).AddTicks(3182),
+                            CreatedTime = new DateTime(2023, 1, 13, 12, 22, 55, 882, DateTimeKind.Local).AddTicks(1496),
                             DisplayOrder = "Retro",
                             Name = "One",
                             isDeleted = false
@@ -200,7 +202,7 @@ namespace MVCtest.Infrastructure.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedTime = new DateTime(2023, 1, 14, 22, 29, 36, 229, DateTimeKind.Local).AddTicks(3195),
+                            CreatedTime = new DateTime(2023, 1, 13, 12, 22, 55, 882, DateTimeKind.Local).AddTicks(1508),
                             DisplayOrder = "Onicks",
                             Name = "Two",
                             isDeleted = false
@@ -252,7 +254,7 @@ namespace MVCtest.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Companies");
+                    b.ToTable("Company");
                 });
 
             modelBuilder.Entity("MVCtest.Infrastructure.Models.Cover", b =>
@@ -304,15 +306,7 @@ namespace MVCtest.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Departments");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Address = "London",
-                            Name = "Administration"
-                        });
+                    b.ToTable("Department");
                 });
 
             modelBuilder.Entity("MVCtest.Infrastructure.Models.Identity.ApplicationUser", b =>
@@ -357,9 +351,6 @@ namespace MVCtest.Infrastructure.Migrations
                     b.Property<string>("FirstName")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
 
                     b.Property<string>("LastName")
                         .HasMaxLength(100)
@@ -419,61 +410,6 @@ namespace MVCtest.Infrastructure.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("e43fa235-a6fe-400b-bcc1-3a1a6e793176"),
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "0f7b6d42-6490-45c3-8357-933421c186fd",
-                            Email = "admin@mail.com",
-                            EmailConfirmed = false,
-                            FirstName = "Nikolas",
-                            IsActive = true,
-                            LastName = "Emilov",
-                            LockoutEnabled = false,
-                            NormalizedEmail = "admin@mail.com",
-                            NormalizedUserName = "admin@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPwGtu4L5xDPNEdexP6f3Xk+JrCQ7fewVRDUBX6KL0KJ1pcexrK6f5uzs3wC2V6vrA==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "cc6dddf4-4868-4d1a-846a-77c3f6a40080",
-                            TwoFactorEnabled = false,
-                            UserName = "admin@mail.com"
-                        },
-                        new
-                        {
-                            Id = new Guid("7bbd63ad-66f7-4f92-83ab-94e357c272d0"),
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "17a3d46d-c6b8-469c-ba36-ff63a9ac8084",
-                            Email = "guest@mail.com",
-                            EmailConfirmed = false,
-                            IsActive = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "guest@mail.com",
-                            NormalizedUserName = "guest@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOVicbhA0DtquBcEFQ+O23L3vRXi6p15KSU7pnQHaJPBJ168kuZSudEl01POpF9g3A==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "04f585cd-279d-4b5a-a4e9-e3c6b81dbc83",
-                            TwoFactorEnabled = false,
-                            UserName = "guest@mail.com"
-                        },
-                        new
-                        {
-                            Id = new Guid("5b8f6f83-89bf-44e0-87d1-e8005d08f2f9"),
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "20b3edd7-95cd-4830-9edc-f6eab5497509",
-                            Email = "worker@mail.com",
-                            EmailConfirmed = false,
-                            IsActive = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "worker@mail.com",
-                            NormalizedUserName = "worker@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEO8keDMSFxfWuVmOt7szmAUW4KqfV9vt8qeQ6Wx0qS10KxsHjyTEa0FVcyiR67Xd2A==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "5337979c-ebd0-4a58-b160-a769d0867357",
-                            TwoFactorEnabled = false,
-                            UserName = "worker@mail.com"
-                        });
                 });
 
             modelBuilder.Entity("MVCtest.Infrastructure.Models.Manager", b =>
@@ -497,14 +433,6 @@ namespace MVCtest.Infrastructure.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Managers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            DepartmentId = 1,
-                            UserId = new Guid("e43fa235-a6fe-400b-bcc1-3a1a6e793176")
-                        });
                 });
 
             modelBuilder.Entity("MVCtest.Infrastructure.Models.Product", b =>
@@ -564,40 +492,6 @@ namespace MVCtest.Infrastructure.Migrations
                     b.HasIndex("CoverId");
 
                     b.ToTable("Products");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 100,
-                            Author = "Stefan Deshev",
-                            CategoryId = 1,
-                            CoverId = 1,
-                            Description = "SInio Liato",
-                            ISBN = "23110009090",
-                            ImgURL = "https://www.luxury-architecture.net/wp-content/uploads/2017/12/1513217889-7597-FAIRWAYS-010.jpg",
-                            ListPrice = 10.0,
-                            Price = 8.0,
-                            Price100 = 5.0,
-                            Price50 = 7.0,
-                            Title = "Lelia Petranka",
-                            isDeleted = false
-                        },
-                        new
-                        {
-                            Id = 101,
-                            Author = "Stefan Deshev",
-                            CategoryId = 2,
-                            CoverId = 2,
-                            Description = "Koziak",
-                            ISBN = "23110009090",
-                            ImgURL = "https://www.luxury-architecture.net/wp-content/uploads/2017/12/1513217889-7597-FAIRWAYS-010.jpg",
-                            ListPrice = 22.0,
-                            Price = 8.0,
-                            Price100 = 5.0,
-                            Price50 = 7.0,
-                            Title = "Kaka Kremena",
-                            isDeleted = false
-                        });
                 });
 
             modelBuilder.Entity("MVCtest.Infrastructure.Models.Worker", b =>
@@ -621,14 +515,6 @@ namespace MVCtest.Infrastructure.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Workers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 10,
-                            DepartmentId = 1,
-                            UserId = new Guid("5b8f6f83-89bf-44e0-87d1-e8005d08f2f9")
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>

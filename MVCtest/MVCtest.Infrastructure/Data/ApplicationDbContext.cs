@@ -19,9 +19,13 @@ namespace MVCtest.Data
             builder.Entity<Category>()
                 .Property(x => x.isDeleted)
                 .HasDefaultValue(false);
-
+            builder.ApplyConfiguration(new ApplicationUserConfiguration());
             builder.ApplyConfiguration(new CategoryConfiguration());
             builder.ApplyConfiguration(new CoverConfiguration());
+            builder.ApplyConfiguration(new DepartmentConfiguration());
+            builder.ApplyConfiguration(new ProductConfiguration());
+            builder.ApplyConfiguration(new ManagerConfiguration());
+            builder.ApplyConfiguration(new WorkerConfiguration());
             base.OnModelCreating(builder);
         }
 
@@ -31,6 +35,9 @@ namespace MVCtest.Data
         public DbSet<Cover> Covers { get; set; }=null!;
         public DbSet<Product> Products { get; set; } = null!;
         public DbSet<Manager> Managers { get; set; }=null!;
+        public DbSet<Company> Companies { get; set; } = null!;
+        public DbSet<Department> Departments { get; set; } = null!;
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }=null!;
 
     }
 }

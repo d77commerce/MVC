@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MVCtest.Core.Models;
+using MVCtest.Infrastructure.Models;
 
 namespace MVCtest.Core.Contracts
 {
-    public interface IshoppingCartService
+    public interface IShoppingCartService
     {
         Task<ShoppingCart> GetShoppingCartAsyncById(int id);
+        Task<IEnumerable<Product>> GetAllProducts();
     }
 }

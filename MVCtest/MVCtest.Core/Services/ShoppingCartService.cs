@@ -13,13 +13,13 @@ using MVCtest.Infrastructure.Models;
 
 namespace MVCtest.Core.Servises
 {
-    public class ShoppingCardService : IshoppingCartService
+    public class ShoppingCartService : IShoppingCartService
     {
 
         private readonly UnitOfWork _unitOfWork;
         private readonly Product _product;
 
-        public ShoppingCardService(UnitOfWork unitOfWork, Product product)
+        public ShoppingCartService(UnitOfWork unitOfWork, Product product)
         {
             _unitOfWork = unitOfWork;
             _product = product;
@@ -61,7 +61,24 @@ namespace MVCtest.Core.Servises
 
         }
 
-
+        public async Task<IEnumerable<Product>> GetAllProducts()
+        {
+            var products = _unitOfWork.Product.GetAll(includeProperties: "Category,Cover")
+                .Where(c => c.isDeleted == false)
+                .Select(c => new Product()
+                {
+                    Id = c.Id,
+                    Title = c.Title,
+                    ISBN = c.ISBN,
+                    Price = c.Price,
+                    Author = c.Author,
+                    CoverId = c.CoverId,
+                    Cover = c.Cover,
+                    CategoryId = c.CategoryId,
+                    Category = c.Category
+                }).ToList();
+            return products;
+        }
 
 
         /*public async <s> 

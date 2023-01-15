@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using MVCtest.Core.Contracts;
 using MVCtest.Core.Models;
+using MVCtest.Core.Servises;
 using MVCtest.Infrastructure.Common;
 using MVCtest.Infrastructure.Models;
 
@@ -14,15 +16,20 @@ namespace MVCtest.Areas.Admin.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IWebHostEnvironment _webHostEnvironment;
+      
 
-        public ProductController(IUnitOfWork unitOfWork, IWebHostEnvironment webHostEnvironment)
+        public ProductController(IUnitOfWork unitOfWork,
+            IWebHostEnvironment webHostEnvironment)
         {
             _unitOfWork = unitOfWork;
             _webHostEnvironment = webHostEnvironment;
+          
         }
         public async Task<IActionResult> Index()
         {
-            var product = _unitOfWork.Product.GetAll(includeProperties:"Category,Cover")
+            /*var products = await _shoppingCartService.GetAllProducts();
+            return View(products);*/
+            var products = _unitOfWork.Product.GetAll(includeProperties:"Category,Cover")
                 .Where(c => c.isDeleted == false)
                 .Select(c => new Product()
                 {
@@ -36,7 +43,7 @@ namespace MVCtest.Areas.Admin.Controllers
                     CategoryId = c.CategoryId,
                     Category = c.Category
                 }).ToList();
-            return View(product);
+            return View(products);
         }
         /*public IActionResult Create()
         {
