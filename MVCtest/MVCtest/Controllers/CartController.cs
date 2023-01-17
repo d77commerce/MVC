@@ -6,6 +6,7 @@ using MVCtest.Infrastructure.Common;
 using MVCtest.Infrastructure.Models;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using MVCtest.Core.Contracts;
 
 namespace MVCtest.Controllers
 {
@@ -13,44 +14,27 @@ namespace MVCtest.Controllers
 	public class CartController : Controller
 	{
 		private readonly IUnitOfWork _unitOfWork;
-
+       
 		public CartController(IUnitOfWork unitOfWork)
 		{
 			_unitOfWork = unitOfWork;
+			
 		}
 		public async Task<IActionResult> Index(int count)
 		{
 			var claimsIdentity = (ClaimsIdentity)User.Identity;
 			var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            ShoppingCartVM shoppingCart = new ShoppingCartVM()
+            {
+                ShoppingCarts = _unitOfWork.CartDb.GetAll(includeProperties: "Product,ApplicationUser")
+                    .Where(u=>u.ApplicationUserId.ToString()==claim.Value)
+            };
+            /*
 			var cart = _unitOfWork.CartDb.GetAll(includeProperties: "Product,ApplicationUser")
-				.Where(u => u.ApplicationUserId.ToString() == claim.Value)
-				.Select(c => new ShoppingCart()
-				{
-					
-					ProductVModel = new()
-					{
-						Product = new(),
-						CategoryList = _unitOfWork.Category.GetAll()
-							.Where(c => c.isDeleted == false)
-							.Select(c => new SelectListItem
-							{
-								Text = c.Name,
-								Value = c.Id.ToString()
+				.Where(u => u.ApplicationUserId.ToString() == claim.Value);
+				*/
 
-							}),
-						CoverTypeList = _unitOfWork.Cover.GetAll()
-							.Where(c => c.isDeleted == false)
-							.Select(c => new SelectListItem
-							{
-								Text = c.Name,
-								Value = c.Id.ToString()
-
-							})
-					},
-					Count = count
-				});
-
-			return View(cart);
+			return View(shoppingCart);
 		}
 	}
 }

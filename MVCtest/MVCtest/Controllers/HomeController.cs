@@ -3,6 +3,7 @@ using MVCtest.Infrastructure.Common;
 using MVCtest.Infrastructure.Models;
 using MVCtest.Models;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Security.Claims;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.AspNetCore.Authorization;
@@ -30,7 +31,7 @@ namespace MVCtest.Controllers
 
         }
 
-        public IActionResult Index()
+       public IActionResult Index()
         {
             IEnumerable<ProductVModel> productList = _unitOfWork.Product.GetAll()
                 .Where(c=>c.isDeleted==false)
