@@ -1,4 +1,5 @@
-﻿using MVCtest.Infrastructure.Common.Category;
+﻿using MVCtest.Infrastructure.Common.cartDb;
+using MVCtest.Infrastructure.Common.Category;
 using MVCtest.Infrastructure.Common.Company;
 using MVCtest.Infrastructure.Common.Cover;
 using MVCtest.Infrastructure.Common.Department;
@@ -14,7 +15,8 @@ namespace MVCtest.Infrastructure.Common
         IProductRepository  Product { get; }
         IDepartmentRepository Department { get; }
         ICompanyRepository Company { get; }
-        IApplicationUser  ApplicationUser { get; }
+        IApplicationUserRepository  ApplicationUser { get; }
+        ICartDbRepository CartDb { get; }
 
         void Save();
     }

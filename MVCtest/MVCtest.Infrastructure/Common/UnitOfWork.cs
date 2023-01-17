@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MVCtest.Data;
+using MVCtest.Infrastructure.Common.cartDb;
 using MVCtest.Infrastructure.Common.Category;
 using MVCtest.Infrastructure.Common.Company;
 using MVCtest.Infrastructure.Common.Cover;
@@ -25,7 +26,8 @@ namespace MVCtest.Infrastructure.Common
             Product= new ProductRepository(_context);
             Department = new DepartmentRepository(_context);
             Company = new CompanyRepository(_context);
-            ApplicationUser = new ApplicationUser(_context);
+            ApplicationUser = new ApplicationUserRepository(_context);
+            CartDb = new CartDbRepository(_context);
         }
         public ICategoryRepository Category { get; private set; }
         public ICoverRepository Cover { get; private set; }
@@ -33,7 +35,8 @@ namespace MVCtest.Infrastructure.Common
         public IProductRepository Product { get; private set; }
         public IDepartmentRepository Department { get; }
         public ICompanyRepository Company { get; }
-        public IApplicationUser ApplicationUser { get; }
+        public IApplicationUserRepository ApplicationUser { get; }
+        public ICartDbRepository CartDb { get; }
 
         public void Save()
         {

@@ -12,6 +12,8 @@ namespace MVCtest.Core.Models
 {
     public class ProductVModel : IProductVModel
     {
+	   
+
         public Product Product { get; set; }
         [ValidateNever]
 

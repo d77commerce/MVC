@@ -30,14 +30,16 @@ namespace MVCtest.Data
         }
 
       
-        public DbSet<Category> Categories { get; set; } = null!;
-        public DbSet<Worker> Workers { get; set; } = null!;
-        public DbSet<Cover> Covers { get; set; }=null!;
-        public DbSet<Product> Products { get; set; } = null!;
-        public DbSet<Manager> Managers { get; set; }=null!;
-        public DbSet<Company> Companies { get; set; } = null!;
-        public DbSet<Department> Departments { get; set; } = null!;
-        public DbSet<ApplicationUser> ApplicationUsers { get; set; }=null!;
+        public DbSet<Category> Categories { get; set; } 
+        public DbSet<Worker> Workers { get; set; }
+        public DbSet<Cover> Covers { get; set; }
+        public DbSet<Product> Products { get; set; } 
+        public DbSet<Manager> Managers { get; set; }
+        public DbSet<Company> Companies { get; set; }
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<CartDb> CartsDb { get; set; }
+
 
     }
 }

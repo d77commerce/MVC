@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -11,7 +12,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MVCtest.Infrastructure.Models
 {
-    public class Product
+    public class Product 
     {
         [Key]
         public int Id { get; set; }
@@ -51,5 +52,6 @@ namespace MVCtest.Infrastructure.Models
         [Required]
         [Comment("Marks record as deleted")]
         public bool isDeleted { get; set; } = false;
+
     }
 }

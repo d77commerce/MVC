@@ -7,10 +7,10 @@ using MVCtest.Data;
 
 namespace MVCtest.Infrastructure.Common.Identity
 {
-    public class ApplicationUser :Repository<ApplicationUser>, IApplicationUser
+    public class ApplicationUserRepository :Repository<ApplicationUserRepository>, IApplicationUserRepository
     {
         private ApplicationDbContext _context;
-        public ApplicationUser(ApplicationDbContext context) : base(context)
+        public ApplicationUserRepository(ApplicationDbContext context) : base(context)
         {
             _context = context;
         }

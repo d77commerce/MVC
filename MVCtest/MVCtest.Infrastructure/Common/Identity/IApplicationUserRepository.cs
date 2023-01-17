@@ -7,7 +7,7 @@ using MVCtest.Infrastructure.Models.Identity;
 
 namespace MVCtest.Infrastructure.Common.Identity
 {
-    public interface IApplicationUser :IRepository<ApplicationUser>
+    public interface IApplicationUserRepository :IRepository<ApplicationUserRepository>
     {
         void Update(Models.Identity.ApplicationUser user);
     }
