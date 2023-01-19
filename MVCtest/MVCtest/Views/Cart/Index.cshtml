@@ -32,25 +32,33 @@
 						<div class="col-12  col-lg-5 text-center row">
 							<div class="col-4 text-md-right pt-4">
 								<h6>
-									<strong>
-										@item.Product.Price.ToString("c")
-										<span class="text-muted">&nbsp;x&nbsp;</span>@item.Count
-									</strong>
+                                    <strong>
+                                        @item.Price.ToString("c")
+										<span class="text-muted">&nbsp;x&nbsp;</span>@item.Count &nbsp;Pcs
+                                    </strong>
+                                    <div>
+                                        <strong>
+                                            <span class="text-muted">&nbsp;&nbsp;</span>Total
+                                            @item.TotalPrice.ToString("c")
+
+                                        </strong>
+                                    </div>
+                                    
 								</h6>
 							</div>
 							<div class="col-6 col-sm-4 col-lg-6 pt-2">
 								<div class="w-75 btn-group" role="group">
-									<a asp-action="" asp-route-cartId="@item.Product.Id" class="btn btn-primary">
-										<i class="bi bi-plus-square">&nbsp;+&nbsp;</i>
+									<a asp-action="PlusCountTask" asp-route-cartId="@item.Id" class="btn btn-primary">
+										<i>&nbsp;+&nbsp;</i>
 									</a> &nbsp;
-									<a asp-action="" asp-route-cartId="@item.Product.Id" class="btn btn-warning">
-										<i class="bi bi-dash-square">&nbsp;-&nbsp;</i>
+									<a asp-action="MinusCountTask" asp-route-cartId="@item.Id" class="btn btn-warning">
+										<i>&nbsp;-&nbsp;</i>
 									</a>
 								</div>
 
 							</div>
 							<div class="col-2 col-sm-4 col-lg-2 text-right pt-2">
-								<a asp-action="" asp-route-cartId="@item.Product.Id" class="btn btn-danger">
+								<a asp-action="Remove" asp-route-cartId="@item.Id" class="btn btn-danger">
 									<i class="bi bi-trash-fill">Delete</i>
 								</a>
 							</div>
@@ -63,7 +71,7 @@
 						<ul class="list-group">
 							<li class="list-group-item d-flex justify-content-between bg-light">
 								<span class="text-info"> Total (USD)</span>
-								<strong class="text-info">@*@Model.OrderHeader.OrderTotal.ToString("c")*@</strong>
+								<strong class="text-info">@Model.TotalSum.ToString("c")</strong>
 							</li>
 						</ul>
 					</div>

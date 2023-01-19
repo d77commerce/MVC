@@ -10,5 +10,6 @@ namespace MVCtest.Core.Contracts
     public interface IShoppingCartVM
     {
         public IEnumerable<CartDb>? ShoppingCarts { get; set; }
+        public double TotalSum { get; set; }
     }
 }

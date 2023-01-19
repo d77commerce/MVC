@@ -31,10 +31,10 @@ namespace MVCtest.Controllers
 
         }
 
-       public IActionResult Index()
+        public IActionResult Index()
         {
             IEnumerable<ProductVModel> productList = _unitOfWork.Product.GetAll()
-                .Where(c=>c.isDeleted==false)
+                .Where(c => c.isDeleted == false)
                 .Select(p => new ProductVModel()
                 {
                     Product = new()
@@ -140,12 +140,24 @@ namespace MVCtest.Controllers
             var claimsIdentity = (ClaimsIdentity)User.Identity;
             var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
 
-            _unitOfWork.CartDb.Add(new()
+            CartDb cartDbFromDb = _unitOfWork.CartDb
+                           .GetFirstOrDefault(u => u.ApplicationUserId == Guid.Parse(claim.Value) &&
+                                                  u.ProductId == shoppingCart.ProductVModel.Product.Id);
+            if (cartDbFromDb == null)
             {
-                ProductId = shoppingCart.ProductVModel.Product.Id,
-                Count = shoppingCart.Count,
-                ApplicationUserId = Guid.Parse(claim.Value)
-            });
+                _unitOfWork.CartDb.Add(new()
+                {
+                    ProductId = shoppingCart.ProductVModel.Product.Id,
+                    Count = shoppingCart.Count,
+                    ApplicationUserId = Guid.Parse(claim.Value)
+                });
+            }
+            else
+            {
+                _unitOfWork.CartDb.PlusCount(cartDbFromDb, shoppingCart.Count);
+            }
+
+
             _unitOfWork.Save();
             return RedirectToAction(nameof(Index));
         }

@@ -10,7 +10,18 @@ namespace MVCtest.Infrastructure.Common.cartDb
         public CartDbRepository(ApplicationDbContext context) : base(context)
         {
             _context = context;
-        } 
+        }
 
+        public int PlusCount(CartDb cartDb, int count)
+        {
+            cartDb.Count += count;
+            return cartDb.Count;
+        }
+
+        public int MinusCount(CartDb cartDb, int count)
+        {
+            cartDb.Count-=count;
+            return cartDb.Count;
+        }
     }
 }

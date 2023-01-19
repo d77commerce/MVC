@@ -12,5 +12,6 @@ namespace MVCtest.Core.Contracts
     {
         Task<ShoppingCart> GetShoppingCartAsyncById(int id);
         Task<IEnumerable<Product>> GetAllProducts();
+       
     }
 }

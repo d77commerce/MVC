@@ -16,14 +16,16 @@ namespace MVCtest.Core.Servises
     public class ShoppingCartService : IShoppingCartService
     {
 
-        private readonly UnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly Product _product;
 
-        public ShoppingCartService(UnitOfWork unitOfWork, Product product)
+        public ShoppingCartService(IUnitOfWork unitOfWork, Product product)
         {
             _unitOfWork = unitOfWork;
             _product = product;
         }
+
+
         public async Task<ShoppingCart> GetShoppingCartAsyncById(int id)
         {
             ShoppingCart shoppingCart = new()
@@ -114,6 +116,41 @@ namespace MVCtest.Core.Servises
             return NotFound();
         }
         return View(shoppingCart.ProductVModel);*/
+        public static double PricePerQuantity(double quantity, double price, double price50, double price100)
+        {
+           
 
+            if (quantity > 99)
+            {
+                return price100;
+            }
+            else if (price > 49)
+            {
+                return price50;
+            }
+            else
+            {
+                return price;
+            }
+        }
+        public static double TotalPricePerQuantity(double quantity, double price, double price50, double price100)
+        {
+            var result = 0.00;
+            if (quantity > 99)
+            {
+                result = quantity * price100;
+            }
+            else if (price > 49)
+            {
+                result = quantity * price50;
+            }
+            else
+            {
+                result = quantity * price;
+            }
+
+            return result;
+
+        }
     }
 }
