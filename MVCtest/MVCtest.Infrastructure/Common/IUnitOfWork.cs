@@ -4,6 +4,8 @@ using MVCtest.Infrastructure.Common.Company;
 using MVCtest.Infrastructure.Common.Cover;
 using MVCtest.Infrastructure.Common.Department;
 using MVCtest.Infrastructure.Common.Identity;
+using MVCtest.Infrastructure.Common.OrderDetail;
+using MVCtest.Infrastructure.Common.OrderHeader;
 using MVCtest.Infrastructure.Common.Product;
 
 namespace MVCtest.Infrastructure.Common
@@ -17,6 +19,8 @@ namespace MVCtest.Infrastructure.Common
         ICompanyRepository Company { get; }
         IApplicationUserRepository  ApplicationUser { get; }
         ICartDbRepository CartDb { get; }
+        IOrderDetailRepository OrderDetail { get; }
+        IOrderHeaderRepository OrderHeader { get; }
 
         void Save();
     }

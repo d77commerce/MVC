@@ -27,7 +27,8 @@ namespace MVCtest.Controllers
 			ShoppingCartVM shoppingCart = new ShoppingCartVM()
 			{
 				ShoppingCarts = _unitOfWork.CartDb.GetAll(includeProperties: "Product,ApplicationUser")
-					.Where(u => u.ApplicationUserId.ToString() == claim.Value)
+					.Where(u => u.ApplicationUserId.ToString() == claim.Value),
+				OrderHeader = new()
 			};
 			foreach (var cart in shoppingCart.ShoppingCarts)
 			{
@@ -42,14 +43,16 @@ namespace MVCtest.Controllers
 		}
 		public async Task<IActionResult> Summary()
 		{
-			/*var claimsIdentity = (ClaimsIdentity)User.Identity;
+			var claimsIdentity = (ClaimsIdentity)User.Identity;
 			var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
 			double sum = 0;
 			ShoppingCartVM shoppingCart = new ShoppingCartVM()
 			{
 				ShoppingCarts = _unitOfWork.CartDb.GetAll(includeProperties: "Product,ApplicationUser")
-					.Where(u => u.ApplicationUserId.ToString() == claim.Value)
+					.Where(u => u.ApplicationUserId.ToString() == claim.Value),
+				OrderHeader = new()
 			};
+			
 			foreach (var cart in shoppingCart.ShoppingCarts)
 			{
 				cart.TotalPrice = ShoppingCartService.TotalPricePerQuantity(cart.Count, cart.Product.Price, cart.Product.Price50,
@@ -59,8 +62,8 @@ namespace MVCtest.Controllers
 				sum += cart.TotalPrice;
 			}
 			shoppingCart.TotalSum = sum;
-			return View(shoppingCart);*/
-			return View();
+			return View(shoppingCart);
+			
 		}
 		public async Task<IActionResult> PlusCountTask(int cartId)
 		{

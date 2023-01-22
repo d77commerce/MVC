@@ -14,5 +14,6 @@ namespace MVCtest.Core.Models
     {
         public IEnumerable<CartDb>? ShoppingCarts { get; set; }
         public double TotalSum { get; set; }
+        public OrderHeader OrderHeader { get; set; }
     }
 }

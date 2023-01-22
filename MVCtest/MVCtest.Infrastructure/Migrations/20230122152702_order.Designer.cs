@@ -4,6 +4,7 @@ using MVCtest.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVCtest.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230122152702_order")]
+    partial class order
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -218,7 +220,7 @@ namespace MVCtest.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedTime = new DateTime(2023, 1, 22, 15, 31, 55, 498, DateTimeKind.Local).AddTicks(636),
+                            CreatedTime = new DateTime(2023, 1, 22, 15, 27, 1, 787, DateTimeKind.Local).AddTicks(3464),
                             DisplayOrder = "Retro",
                             Name = "One",
                             isDeleted = false
@@ -226,7 +228,7 @@ namespace MVCtest.Infrastructure.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedTime = new DateTime(2023, 1, 22, 15, 31, 55, 498, DateTimeKind.Local).AddTicks(650),
+                            CreatedTime = new DateTime(2023, 1, 22, 15, 27, 1, 787, DateTimeKind.Local).AddTicks(3477),
                             DisplayOrder = "Onicks",
                             Name = "Two",
                             isDeleted = false
@@ -451,7 +453,7 @@ namespace MVCtest.Infrastructure.Migrations
                         {
                             Id = new Guid("e43fa235-a6fe-400b-bcc1-3a1a6e793176"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6da9e0e2-9b11-44f3-b444-b048f510cc67",
+                            ConcurrencyStamp = "9020958a-7844-4b82-90e9-181fa39e8f5e",
                             Email = "admin@mail.com",
                             EmailConfirmed = false,
                             FirstName = "Nikolas",
@@ -460,9 +462,9 @@ namespace MVCtest.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "admin@mail.com",
                             NormalizedUserName = "admin@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMxVxaR+tN0YyyueqczvYDNO/He3uS1vfuJtHVOk0YJcpeXNJIYrIdqdGl+A2XkVZw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDUuHvkPSmG9q5mfKuYlw/jjUrNaNlyESDIM/6uibsZa2fOCWMFb619gv9XeK8g8jA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a91dfb0a-58c5-4411-9231-faa3f194911a",
+                            SecurityStamp = "f76a045b-7508-446b-a22d-ba40f29ddb2c",
                             TwoFactorEnabled = false,
                             UserName = "admin@mail.com"
                         },
@@ -470,16 +472,16 @@ namespace MVCtest.Infrastructure.Migrations
                         {
                             Id = new Guid("7bbd63ad-66f7-4f92-83ab-94e357c272d0"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ef731d25-b8f7-4be5-9e69-cf819197954c",
+                            ConcurrencyStamp = "151ddfac-7ba3-4e1e-b834-a4737fefc2fa",
                             Email = "guest@mail.com",
                             EmailConfirmed = false,
                             IsActive = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "guest@mail.com",
                             NormalizedUserName = "guest@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOXuBIboH6aZO8RivW2dMBwCsPWnw/kU1qfn4jurDN21PDhBB99SOgN6IIOxu6iQuw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIGEJe7pnNQfc1XsZa01zKQaSluHU09lUVm2cfuvJPpGj3suzhx7gcgCRWS7XCe18Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6124c6b7-b47a-4eaa-91e4-0c62d653e65c",
+                            SecurityStamp = "c16edaa2-60c0-4534-8ad0-2b76b124fd2b",
                             TwoFactorEnabled = false,
                             UserName = "guest@mail.com"
                         },
@@ -487,16 +489,16 @@ namespace MVCtest.Infrastructure.Migrations
                         {
                             Id = new Guid("5b8f6f83-89bf-44e0-87d1-e8005d08f2f9"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c13ebba1-cb80-489d-9e2e-18ccfc60e2f2",
+                            ConcurrencyStamp = "22a82597-a9d3-4c9e-a139-2de9dd517843",
                             Email = "worker@mail.com",
                             EmailConfirmed = false,
                             IsActive = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "worker@mail.com",
                             NormalizedUserName = "worker@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIy+BKtqrdSeFO4BnzuHVQDMfzEHJCTi3Pb1HBubXPIai6JAJ/hd/KmouqACWETP6A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEM+sOrju3oSftHDJF3tTxDSxxqipk6i2cP+B29nVyuHoAcN30Xl1A0xLT9zqwuNHLA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a5646c6c-020a-4b86-b878-2c348ba15304",
+                            SecurityStamp = "60dbd7f2-95c1-4628-9391-63e06cc31a11",
                             TwoFactorEnabled = false,
                             UserName = "worker@mail.com"
                         });
@@ -570,7 +572,7 @@ namespace MVCtest.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<Guid>("AppUserId")
+                    b.Property<Guid>("ApplicationUserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Carrier")
@@ -632,7 +634,7 @@ namespace MVCtest.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AppUserId");
+                    b.HasIndex("ApplicationUserId");
 
                     b.ToTable("OrderHeaders");
                 });
@@ -882,7 +884,7 @@ namespace MVCtest.Infrastructure.Migrations
                 {
                     b.HasOne("MVCtest.Infrastructure.Models.Identity.ApplicationUser", "ApplicationUser")
                         .WithMany()
-                        .HasForeignKey("AppUserId")
+                        .HasForeignKey("ApplicationUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

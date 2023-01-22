@@ -39,6 +39,8 @@ namespace MVCtest.Data
         public DbSet<Department> Departments { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<CartDb> CartsDb { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<OrderHeader> OrderHeaders { get; set; }
 
 
     }
