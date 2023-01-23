@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MVCtest.Data;
+﻿using MVCtest.Data;
+using MVCtest.Infrastructure.Models.Identity;
 
 namespace MVCtest.Infrastructure.Common.Identity
 {
-    public class ApplicationUserRepository :Repository<ApplicationUserRepository>, IApplicationUserRepository
+    public class ApplicationUserRepository :Repository<ApplicationUser>, IApplicationUserRepository
     {
         private ApplicationDbContext _context;
         public ApplicationUserRepository(ApplicationDbContext context) : base(context)

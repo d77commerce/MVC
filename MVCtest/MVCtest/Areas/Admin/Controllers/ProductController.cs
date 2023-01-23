@@ -160,10 +160,10 @@ namespace MVCtest.Areas.Admin.Controllers
         }
         public async Task<IActionResult> Delete(int id)
         {
-            var productId = _unitOfWork.Product.GetFirstOrDefault(u => u.Id == id);
-            if (productId != null)
+            var product = _unitOfWork.Product.GetFirstOrDefault(u => u.Id == id);
+            if (product != null)
             {
-                productId.isDeleted = true;
+                product.isDeleted = true;
                 _unitOfWork.Save();
             }
 

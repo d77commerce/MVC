@@ -27,5 +27,7 @@ namespace MVCtest.Infrastructure.Models
         public double Price { get; set; }
         [NotMapped]
         public double TotalPrice { get; set; }
+        [Required]
+        public bool IsActive { get; set; } = false;
     }
 }

@@ -4,7 +4,7 @@ using MVCtest.Infrastructure.Models;
 namespace MVCtest.Infrastructure.Common.cartDb
 
 {
-    public class CartDbRepository : Repository<Models.CartDb>, ICartDbRepository
+    public class CartDbRepository : Repository<CartDb>, ICartDbRepository
     {
         private ApplicationDbContext _context;
         public CartDbRepository(ApplicationDbContext context) : base(context)

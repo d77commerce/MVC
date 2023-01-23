@@ -36,6 +36,10 @@ namespace MVCtest.Infrastructure.Models
 		public string PhoneNumber { get; set; } = null!;
 		[Required]
 		public string StreetAddress { get; set; } = null!;
+		[StringLength(100)]
+		public string? AddressLine1 { get; set; }
+		[StringLength(100)]
+		public string? AddressLine2 { get; set; }
 		[Required]
 		public string City { get; set; } = null!;
 		[Required]
@@ -44,5 +48,7 @@ namespace MVCtest.Infrastructure.Models
 		public string PostalCode { get; set; } = null!;
 		[Required]
 		public string Name { get; set; } = null!;
+		
+		public string? ShipmentInstruction { get; set; }
 	}
 }
