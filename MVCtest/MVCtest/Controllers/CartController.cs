@@ -30,8 +30,7 @@ namespace MVCtest.Controllers
 			ShoppingCartVM shoppingCart = new ShoppingCartVM()
 			{
 				ShoppingCarts = _unitOfWork.CartDb.GetAll(includeProperties: "Product")
-					.Where(u => u.ApplicationUserId.ToString() == claim.Value)
-					,
+					.Where(u => u.ApplicationUserId.ToString() == claim.Value),
 				OrderHeader = new()
 			};
 			foreach (var cart in shoppingCart.ShoppingCarts)

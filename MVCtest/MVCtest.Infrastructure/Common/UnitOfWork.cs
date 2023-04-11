@@ -19,7 +19,7 @@ namespace MVCtest.Infrastructure.Common
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
         public UnitOfWork(ApplicationDbContext context)
         {
